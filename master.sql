@@ -457,7 +457,6 @@ BEGIN
            ,[id_persona])
      VALUES
            (@usuario, @pass, @id_persona)
-         
 
 END
 GO
