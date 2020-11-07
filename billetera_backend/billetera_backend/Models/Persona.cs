@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace billetera_project.Models
+namespace billetera_backend.Models
 {
     public class Persona
     {
+        private int id;
         private string nombre;
         private string apellido;
         private string cuit;
         private string direccion;
         private string estadoCivil;
-        private string idLocalidad;
+        private int idLocalidad;
 
-        public Persona(string nombre, string apellido, string cuit, string direccion, string estadoCivil, string idLocalidad)
+        public Persona()
         {
+
+        }
+
+        public Persona(int id, string nombre, string apellido, string cuit, string direccion, int idLocalidad, string estadoCivil)
+        {
+            this.id = id;
             this.nombre = nombre;
             this.apellido = apellido;
             this.cuit = cuit;
@@ -23,6 +30,12 @@ namespace billetera_project.Models
             this.estadoCivil = estadoCivil;
             this.idLocalidad = idLocalidad;
 
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         public string Nombre
@@ -65,10 +78,10 @@ namespace billetera_project.Models
 
         }
 
-        public string IdLocalidad
+        public int IdLocalidad
         {
             get { return idLocalidad; }
+            set { idLocalidad = value; }
         }
-
     }
 }

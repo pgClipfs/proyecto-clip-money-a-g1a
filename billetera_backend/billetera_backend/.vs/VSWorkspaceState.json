@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Models"
   ],
-  "SelectedNode": "\\Models",
+  "SelectedNode": "\\Models\\Giro.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -92,3 +92,11 @@ C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backen
 C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\obj\Debug\billetera_backend.csproj.CopyComplete
 C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\obj\Debug\billetera_backend.dll
 C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\obj\Debug\billetera_backend.pdb
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\billetera_backend\bin\System.IdentityModel.Tokens.Jwt.xml

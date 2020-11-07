@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\billetera_backend",
+    "\\billetera_backend\\Models"
   ],
-  "SelectedNode": "\\billetera_backend.sln",
+  "SelectedNode": "\\billetera_backend\\Models",
   "PreviewInSolutionExplorer": false
 }
