@@ -9,7 +9,7 @@ using System.Web.Routing;
 
 namespace billetera_backend.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/persona")]
     public class PersonaController : ApiController
     {
