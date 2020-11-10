@@ -1,0 +1,40 @@
+<div class="fondo">
+<div class="container pt-5">
+    <div class="row justify-content-center">
+        <div class="col-8 col-sm-8 col-lg-10">
+            <div class="text-center">
+              <img class="w-25 rounded" src="../../../assets/images/RecursosMoneyClip_Logo.png">
+            </div>
+            <h3 class="text-center text-white">LISTA DE PERSONAS</h3>
+            <table class="table table-dark mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cuit</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Localidad</th>
+                    <th scope="col">Estado Civil</th>
+                    <th>Gestión</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let persona of personas">
+                        <td>{{persona.Id}}</td>
+                        <td>{{persona.Apellido}}</td>
+                        <td >{{persona.Nombre}}</td>
+                        <td >{{persona.Cuit}}</td>
+                        <td >{{persona.Direccion}}</td>
+                        <td >{{persona.IdLocalidad}}</td>
+                        <td >{{persona.EstadoCivil}}</td>
+                        <td><button class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                </tbody>
+              </table>
+              
+        </div>
+        
+    </div>
+</div>
+</div>
