@@ -23,7 +23,6 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,8 +82,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +125,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bundles\assets\images\descarga.jpg" />
+    <Content Include="Bundles\assets\images\Recursos Money Clip-02.png" />
+    <Content Include="Bundles\assets\images\Recursos Money Clip-03.png" />
+    <Content Include="Bundles\assets\images\Recursos Money Clip-04.png" />
+    <Content Include="Bundles\assets\images\Recursos Money Clip-05.png" />
+    <Content Include="Bundles\assets\images\Recursos Money Clip-06.png" />
+    <Content Include="Bundles\assets\images\RecursosMoneyClip_Logo.png" />
+    <Content Include="Bundles\favicon.ico" />
+    <Content Include="Bundles\index.html" />
+    <Content Include="Bundles\main.js" />
+    <Content Include="Bundles\polyfills.js" />
+    <Content Include="Bundles\runtime.js" />
+    <Content Include="Bundles\styles.js" />
+    <Content Include="Bundles\vendor.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -154,6 +167,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Bundles\main.js.map" />
+    <Content Include="Bundles\polyfills.js.map" />
+    <Content Include="Bundles\runtime.js.map" />
+    <Content Include="Bundles\styles.js.map" />
+    <Content Include="Bundles\vendor.js.map" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">

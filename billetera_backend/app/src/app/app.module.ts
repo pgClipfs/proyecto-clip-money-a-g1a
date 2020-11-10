@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 
 import { PersonaComponent } from './components/persona/persona.component';
 import { PersonaService } from './services/persona.service';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonaComponent
+    PersonaComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,7 @@ namespace billetera_backend.App_Start
                "~/bundles/zone.*",
                "~/bundles/main.*"));
             bundles.Add(new StyleBundle("~/Content/Styles").Include("~/bundles/styles.*"));
+
         }
     }
 }
