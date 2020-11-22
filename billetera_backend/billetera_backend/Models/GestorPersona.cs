@@ -9,6 +9,30 @@ namespace billetera_backend.Models
 {
     public class GestorPersona
     {
+        public int AgregarPersona(Persona nueva)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+            int id = 0;
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "insertar_persona";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nombre", nueva.Nombre));
+                comm.Parameters.Add(new SqlParameter("@apellido", nueva.Apellido));
+                comm.Parameters.Add(new SqlParameter("@cuit", nueva.Cuit));
+                comm.Parameters.Add(new SqlParameter("@direccion", nueva.Direccion));
+                comm.Parameters.Add(new SqlParameter("@id_localidad", nueva.IdLocalidad));
+                comm.Parameters.Add(new SqlParameter("@estado_civil", nueva.EstadoCivil));
+
+
+                id = Convert.ToInt32(comm.ExecuteScalar());
+            }
+            return id;
+        }
         public List<Persona> ObtenerPersonas()
         {
             List<Persona> lista = new List<Persona>();
@@ -46,6 +70,23 @@ namespace billetera_backend.Models
             }
         }
 
+        public void Eliminar(int id)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("eliminar_persona", conn);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@id", id));
+
+                comm.ExecuteNonQuery();
+            }
+
+        }
+
         public Persona ObtenerPorId(int id)
         {
             Persona p = null;
@@ -77,6 +118,31 @@ namespace billetera_backend.Models
 
             return p;
 
+        }
+
+        public void ModificarPersona(Persona p)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "modificar_persona";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nombre", p.Nombre));
+                comm.Parameters.Add(new SqlParameter("@apellido", p.Apellido));
+                comm.Parameters.Add(new SqlParameter("@cuit", p.Cuit));
+                comm.Parameters.Add(new SqlParameter("@direccion", p.Direccion));
+                comm.Parameters.Add(new SqlParameter("@id_localidad", p.IdLocalidad));
+                comm.Parameters.Add(new SqlParameter("@estado_civil", p.EstadoCivil));
+                comm.Parameters.Add(new SqlParameter("@id", p.Id));
+
+                comm.ExecuteNonQuery();
+
+
+            }
         }
     }
 }
