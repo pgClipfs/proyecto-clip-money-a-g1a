@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   public login: Login[];
   selectedLogin: Login = new Login();
 
+
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -20,9 +21,11 @@ export class LoginComponent implements OnInit {
   public onSubmit(login: Login) {
 
     this.loginService.getToken(login).subscribe(resp => {
-      console.log(resp)
+
     });
 
   }
+
+
 
 }
