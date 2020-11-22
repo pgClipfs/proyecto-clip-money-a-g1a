@@ -14,9 +14,9 @@ export class LoginService {
     console.log('Login service is running');
   }
 
-  getToken(login: Login): Observable<Login[]> {
+  getToken(login: Login): Observable<string> {
 
     let header = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post<Login[]>(this.url, login);
+    return this.http.post<string>(this.url, login);
   }
 }

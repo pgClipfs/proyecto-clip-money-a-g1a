@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Login } from '../../models/login.model';
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   selectedLogin: Login = new Login();
 
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,8 +21,14 @@ export class LoginComponent implements OnInit {
   public onSubmit(login: Login) {
 
     this.loginService.getToken(login).subscribe(resp => {
-
-    });
+      localStorage.setItem('token', resp);
+      this.router.navigateByUrl('/home');
+      console.log(resp)
+    },
+      err => {
+        if (err.status == 401) alert("Error")
+      }
+    );
 
   }
 

@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace billetera_backend.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/persona")]
     public class PersonaController : ApiController
     {
