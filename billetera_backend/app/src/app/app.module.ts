@@ -11,13 +11,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { InterceptorService } from './services/interceptor.service';
+import { RegistroComponent } from './components/registro/registro.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonaComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegistroComponent,
+    NavbarComponent
 
   ],
   imports: [

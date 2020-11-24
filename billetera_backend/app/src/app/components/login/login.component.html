@@ -1,17 +1,55 @@
-<div class="container pt-5">
-    <div class="row justify-content-center">
-        <div class="col-8 col-sm-8 col-lg-4">
-            <form>
-                <div class="form-group">
-                    <label for="nombre">Usuario</label>
-                    <input type="text" [(ngModel)]="selectedLogin.Username" name="Username" class="form-control">
+<div class="limiter animated fadeInLeft">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form #formulario="ngForm" class="login100-form validate-form flex-sb flex-w">
+                <div class="text-center logoAncho">
+                    <img class="logo" src="assets/images/RecursosMoneyClip_Logo.png" alt="">
                 </div>
-                <div class="form-group">
-                    <label for="nombre">Password</label>
-                    <input type="text" [(ngModel)]="selectedLogin.Password" name="Password" class="form-control">
+                <!-- <span class="login100-form-title p-b-51">
+                            Login
+                        </span> -->
+
+                <span *ngIf="formulario.submitted && formulario.controls['Username'].errors"
+                    class="text-white animated fadeIn">El usuario es obligatorio</span>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="Username" placeholder="Usuario"
+                        [(ngModel)]="selectedLogin.Username" required>
+
+                    <span class="focus-input100"></span>
                 </div>
-                <button class="btn btn-primary" (click)="onSubmit(selectedLogin)">Submit</button>
+
+                <span *ngIf="formulario.submitted && formulario.controls['Password'].errors"
+                    class="text-white animated fadeIn">La contraseña de al menos 8 letras</span>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="password" name="Password" placeholder="Contraseña"
+                        [(ngModel)]="selectedLogin.Password" required minlength="8">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="flex-sb-m w-full p-t-3 p-b-24">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Recordar mi usuario
+                        </label>
+                    </div>
+
+                    <div>
+                        <a routerLink="/registro" class="txt1">
+                            ¿No tienes cuenta?
+                        </a>
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit" (click)="onSubmit(selectedLogin)">
+                        Ingresar
+                    </button>
+                </div>
+
             </form>
         </div>
     </div>
+
+
 </div>

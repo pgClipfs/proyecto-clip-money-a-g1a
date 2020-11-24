@@ -10,24 +10,12 @@ using System.Web.Http.Cors;
 
 namespace billetera_backend.Controllers
 {
-    [Authorize]
+    
     [RoutePrefix("api/persona")]
     public class PersonaController : ApiController
     {
-        // GET: api/Persona
+        
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IEnumerable<Persona> Get()
-        {
-            GestorPersona gPersona = new GestorPersona();
-            return gPersona.ObtenerPersonas();
-        }
-
-        // GET: api/Persona/5
-        public Persona Get(int id)
-        {
-            GestorPersona gPersona = new GestorPersona();
-            return gPersona.ObtenerPorId(id);
-        }
 
         // POST: api/Persona
         public Persona Post(Persona persona)
@@ -39,6 +27,22 @@ namespace billetera_backend.Controllers
             return persona;
         }
 
+        // GET: api/Persona
+        [Authorize]
+        public IEnumerable<Persona> Get()
+        {
+            GestorPersona gPersona = new GestorPersona();
+            return gPersona.ObtenerPersonas();
+        }
+
+        // GET: api/Persona/5
+       
+        public Persona Get(int id)
+        {
+            GestorPersona gPersona = new GestorPersona();
+            return gPersona.ObtenerPorId(id);
+        }
+
         // PUT: api/Persona/5
         public void Put(Persona persona)
         {
@@ -46,7 +50,7 @@ namespace billetera_backend.Controllers
             gPersona.ModificarPersona(persona);
 
         }
-
+        
         // DELETE: api/Persona/5
         public void Delete(int id)
         {

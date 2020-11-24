@@ -13,9 +13,11 @@ export class LoginComponent implements OnInit {
   selectedLogin: Login = new Login();
 
 
+
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('token')
   }
 
   public onSubmit(login: Login) {
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
       console.log(resp)
     },
       err => {
-        if (err.status == 401) alert("Error")
+        if (err.status == 401) alert("Contraseña o Usuario invalido")
       }
     );
 
