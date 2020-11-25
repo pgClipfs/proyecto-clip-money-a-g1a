@@ -6,13 +6,10 @@ using System.Net.Http;
 using System.Web.Http;
 using billetera_backend.Models;
 using System.Threading;
-using System.Web.Http.Cors;
 
 
 namespace billetera_backend.Controllers
 {
-
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [AllowAnonymous]
     [RoutePrefix("api/login")]
     public class LoginController : ApiController

@@ -1,69 +1,40 @@
 <div class="fondo">
-  <div class="container pt-5">
+<div class="container pt-5">
     <div class="row justify-content-center">
-      <div class="col-8 col-sm-8 col-lg-10">
-        <div class="text-center">
-          <img class="w-25 rounded" src="assets/images/RecursosMoneyClip_Logo.png" alt="Logo">
+        <div class="col-8 col-sm-8 col-lg-10">
+            <div class="text-center">
+              <img class="w-25 rounded" src="../../../assets/images/RecursosMoneyClip_Logo.png">
+            </div>
+            <h3 class="text-center text-white">LISTA DE PERSONAS</h3>
+            <table class="table table-dark mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cuit</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Localidad</th>
+                    <th scope="col">Estado Civil</th>
+                    <th>Gestión</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let persona of personas">
+                        <td>{{persona.Id}}</td>
+                        <td>{{persona.Apellido}}</td>
+                        <td >{{persona.Nombre}}</td>
+                        <td >{{persona.Cuit}}</td>
+                        <td >{{persona.Direccion}}</td>
+                        <td >{{persona.IdLocalidad}}</td>
+                        <td >{{persona.EstadoCivil}}</td>
+                        <td><button class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                </tbody>
+              </table>
+              
         </div>
-        <h3 class="text-center text-white">LISTA DE PERSONAS</h3>
-        <table class="table table-dark mt-3">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Apellido</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Cuit</th>
-              <th scope="col">Direccion</th>
-              <th scope="col">Localidad</th>
-
-              <th>Gestión</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let persona of personas;" (click)="onSelect(persona)">
-              <td>{{persona.Id}}</td>
-              <td>{{persona.Apellido}}</td>
-              <td>{{persona.Nombre}}</td>
-              <td>{{persona.Cuit}}</td>
-              <td>{{persona.Direccion}}</td>
-              <td>{{persona.IdLocalidad}}</td>
-
-              <td><button (click)="onDelete(persona.Id)" class="btn btn-danger">Eliminar</button>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-
+        
     </div>
-    <div class="row justify-content-center">
-      <div class="col-5 col-sm-6 col-lg-6">
-        <form>
-          <div class="form-group">
-            <label for="nombre" class="text-white">Nombre</label>
-            <input type="text" [(ngModel)]="selectedPersona.Nombre" name="Nombre" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="apellido" class="text-white">Apellido</label>
-            <input type="text" [(ngModel)]="selectedPersona.Apellido" name="Apellido" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="cuit" class="text-white">Cuit</label>
-            <input type="text" [(ngModel)]="selectedPersona.Cuit" name="Cuit" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="direccion" class="text-white">Direccion</label>
-            <input type="text" [(ngModel)]="selectedPersona.Direccion" name="Direccion" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="idlocalidad" class="text-white">Localidad</label>
-            <input type="text" [(ngModel)]="selectedPersona.IdLocalidad" name="IdLocalidad" class="form-control">
-          </div>
-
-          <button class="btn btn-primary" (click)="onSubmit(selectedPersona)">Submit</button>
-        </form>
-
-      </div>
-    </div>
-  </div>
+</div>
 </div>
