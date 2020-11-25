@@ -6,5 +6,6 @@ export class Persona {
     Cuit: string;
     Direccion: string;
     IdLocalidad: number;
-    EstadoCivil: string;
+    Email: string;
+    Pass: string;
 }

@@ -25,38 +25,20 @@
                     <span class="focus-input100"></span>
                 </div>
 
-                <span *ngIf="formulario.submitted && formulario.controls['Cuit'].errors"
-                    class="text-white animated fadeIn">El cuit es obligatorio</span>
+                <span *ngIf="formulario.submitted && formulario.controls['Email'].errors"
+                    class="text-white animated fadeIn">El email es obligatorio</span>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="Cuit" placeholder="Cuit"
-                        [(ngModel)]="selectedPersona.Cuit" required>
+                    <input class="input100" type="email" name="Email" placeholder="Email"
+                        [(ngModel)]="selectedPersona.Email" required email>
 
                     <span class="focus-input100"></span>
                 </div>
 
-                <span *ngIf="formulario.submitted && formulario.controls['Direccion'].errors"
-                    class="text-white animated fadeIn">El apellido es obligatorio</span>
+                <span *ngIf="formulario.submitted && formulario.controls['Pass'].errors"
+                    class="text-white animated fadeIn">Al menos 8 caracteres</span>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="Direccion" placeholder="Direccion"
-                        [(ngModel)]="selectedPersona.Direccion" required>
-
-                    <span class="focus-input100"></span>
-                </div>
-
-                <span *ngIf="formulario.submitted && formulario.controls['IdLocalidad'].errors"
-                    class="text-white animated fadeIn">El apellido es obligatorio</span>
-                <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="IdLocalidad" placeholder="Localidad"
-                        [(ngModel)]="selectedPersona.IdLocalidad" required>
-
-                    <span class="focus-input100"></span>
-                </div>
-
-                <span *ngIf="formulario.submitted && formulario.controls['EstadoCivil'].errors"
-                    class="text-white animated fadeIn">El apellido es obligatorio</span>
-                <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="EstadoCivil" placeholder="Estado Civil"
-                        [(ngModel)]="selectedPersona.EstadoCivil" required>
+                    <input class="input100" type="password" name="Pass" placeholder="Contraseña"
+                        [(ngModel)]="selectedPersona.Pass" required minlength="8">
 
                     <span class="focus-input100"></span>
                 </div>
@@ -77,7 +59,7 @@
                 </div>
 
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn" type="submit" (click)="onSubmit(selectedPersona)">
+                    <button class="login100-form-btn" type="submit" (click)="onSubmit(formulario, selectedPersona)">
                         Crear cuenta
                     </button>
                 </div>

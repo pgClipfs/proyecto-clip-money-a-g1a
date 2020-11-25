@@ -27,6 +27,20 @@ namespace billetera_backend.Controllers
             return persona;
         }
 
+        /*public Persona Post(Persona persona, LoginRequest usuario)
+        {
+            int id;
+            int id_usuario;
+            GestorPersona gPersona = new GestorPersona();
+            GestorLogin gLogin = new GestorLogin();
+            id = gPersona.AgregarPersona(persona);
+            persona.Id = id;
+            usuario.Id_persona = persona.Id;
+            id_usuario = gLogin.AgregarUsuario(usuario);
+            usuario.Id = id_usuario;
+            return persona;
+        }*/
+
         // GET: api/Persona
         [Authorize]
         public IEnumerable<Persona> Get()

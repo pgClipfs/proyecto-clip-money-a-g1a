@@ -15,7 +15,7 @@
               <th scope="col">Cuit</th>
               <th scope="col">Direccion</th>
               <th scope="col">Localidad</th>
-              <th scope="col">Estado Civil</th>
+
               <th>Gestión</th>
             </tr>
           </thead>
@@ -27,7 +27,7 @@
               <td>{{persona.Cuit}}</td>
               <td>{{persona.Direccion}}</td>
               <td>{{persona.IdLocalidad}}</td>
-              <td>{{persona.EstadoCivil}}</td>
+
               <td><button (click)="onDelete(persona.Id)" class="btn btn-danger">Eliminar</button>
             </tr>
           </tbody>
@@ -59,10 +59,7 @@
             <label for="idlocalidad" class="text-white">Localidad</label>
             <input type="text" [(ngModel)]="selectedPersona.IdLocalidad" name="IdLocalidad" class="form-control">
           </div>
-          <div class="form-group">
-            <label for="estadocivil" class="text-white">Estado Civil</label>
-            <input type="text" [(ngModel)]="selectedPersona.EstadoCivil" name="EstadoCivil" class="form-control">
-          </div>
+
           <button class="btn btn-primary" (click)="onSubmit(selectedPersona)">Submit</button>
         </form>
 

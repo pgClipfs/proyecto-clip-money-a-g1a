@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from '../../services/persona.service';
 import { Persona } from '../../models/persona.model';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-registro',
@@ -12,7 +14,7 @@ export class RegistroComponent implements OnInit {
   public personas: Persona[];
   selectedPersona: Persona = new Persona();
 
-  constructor(private personaService: PersonaService) { }
+  constructor(private personaService: PersonaService, private router: Router) { }
 
   ngOnInit(): void {
     this.personaService.getPersonas().subscribe(resp => {
@@ -28,13 +30,27 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+  onZubmit(form: NgForm) {
 
-  public onSubmit(persona: Persona) {
+    if (form.invalid) {
+      return;
+    }
+
+
+  }
+
+  public onSubmit(form: NgForm, persona: Persona) {
+
+    if (form.invalid) {
+      return;
+    }
 
     if (persona.Id == 0) {
       this.personaService.onCreatePersona(persona).subscribe(resp => {
-        this.personas.push(resp);
+
       });
+      alert('Registro exitoso')
+      this.router.navigateByUrl('user/login');
     }
     else {
       this.personaService.onUpdatePersona(persona).subscribe(resp => {

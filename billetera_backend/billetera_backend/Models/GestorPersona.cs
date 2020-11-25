@@ -23,11 +23,9 @@ namespace billetera_backend.Models
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@nombre", nueva.Nombre));
                 comm.Parameters.Add(new SqlParameter("@apellido", nueva.Apellido));
-                comm.Parameters.Add(new SqlParameter("@cuit", nueva.Cuit));
-                comm.Parameters.Add(new SqlParameter("@direccion", nueva.Direccion));
-                comm.Parameters.Add(new SqlParameter("@id_localidad", nueva.IdLocalidad));
-                comm.Parameters.Add(new SqlParameter("@estado_civil", nueva.EstadoCivil));
-
+                comm.Parameters.Add(new SqlParameter("@email", nueva.Email));
+                comm.Parameters.Add(new SqlParameter("@pass", nueva.Pass));
+           
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
             }
@@ -56,9 +54,9 @@ namespace billetera_backend.Models
                     string cuit = dr.GetString(3).Trim();
                     string direccion = dr.GetString(4).Trim();
                     int id_localidad = dr.GetInt32(5); 
-                    string estado_civil = dr.GetString(6).Trim();
+                    
 
-                    Persona p = new Persona(id, nombre, apellido, cuit, direccion, id_localidad, estado_civil);
+                    Persona p = new Persona(id, nombre, apellido, cuit, direccion, id_localidad);
                     lista.Add(p);
                 }
 
@@ -108,9 +106,9 @@ namespace billetera_backend.Models
                     string cuit = dr.GetString(3).Trim();
                     string direccion = dr.GetString(4).Trim();
                     int id_localidad = dr.GetInt32(5);
-                    string estado_civil = dr.GetString(6).Trim();
+                   
 
-                    p = new Persona(id, nombre, apellido, cuit, direccion, id_localidad,estado_civil);
+                    p = new Persona(id, nombre, apellido, cuit, direccion, id_localidad);
                 }
 
                 dr.Close();
@@ -136,7 +134,7 @@ namespace billetera_backend.Models
                 comm.Parameters.Add(new SqlParameter("@cuit", p.Cuit));
                 comm.Parameters.Add(new SqlParameter("@direccion", p.Direccion));
                 comm.Parameters.Add(new SqlParameter("@id_localidad", p.IdLocalidad));
-                comm.Parameters.Add(new SqlParameter("@estado_civil", p.EstadoCivil));
+                
                 comm.Parameters.Add(new SqlParameter("@id", p.Id));
 
                 comm.ExecuteNonQuery();

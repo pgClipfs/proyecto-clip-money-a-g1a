@@ -32,7 +32,7 @@ export class PersonaComponent implements OnInit {
 
   public onSubmit(persona: Persona) {
 
-    if (persona.Id == 0) {
+    /*if (persona.Id == 0) {
       this.personaService.onCreatePersona(persona).subscribe(resp => {
         this.personas.push(resp);
       });
@@ -41,7 +41,7 @@ export class PersonaComponent implements OnInit {
       this.personaService.onUpdatePersona(persona).subscribe(resp => {
 
       });
-    }
+    }*/
 
     this.selectedPersona = new Persona();
   }

@@ -21,8 +21,8 @@ namespace billetera_backend.Models
 
                 SqlCommand comm = new SqlCommand("obtener_login", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@username", ploginRequest.Username));
-                comm.Parameters.Add(new SqlParameter("@password", ploginRequest.Password));
+                comm.Parameters.Add(new SqlParameter("@email", ploginRequest.Username));
+                comm.Parameters.Add(new SqlParameter("@pass", ploginRequest.Password));
 
                 SqlDataReader reader = comm.ExecuteReader();
 
@@ -35,5 +35,7 @@ namespace billetera_backend.Models
             return result;
 
         }
+
+       
     }
 }

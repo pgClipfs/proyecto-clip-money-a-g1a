@@ -7,14 +7,22 @@ namespace billetera_backend.Models
 {
     public class Usuario
     {
+        private int id;
         private string nombreUsuario;
         private string pass;
+        private int id_persona;
 
-        public Usuario(string nombreUsuario, string pass)
+        
+
+        public Usuario(int id, string nombreUsuario, string pass, int id_persona)
         {
+            this.id = id;
             this.nombreUsuario = nombreUsuario;
             this.pass = pass;
+            this.id_persona = id_persona;
         }
+
+        
 
         public string NombreUsuario
         {

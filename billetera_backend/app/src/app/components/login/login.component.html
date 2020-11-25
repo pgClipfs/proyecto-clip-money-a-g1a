@@ -19,10 +19,10 @@
                 </div>
 
                 <span *ngIf="formulario.submitted && formulario.controls['Password'].errors"
-                    class="text-white animated fadeIn">La contraseña de al menos 8 letras</span>
+                    class="text-white animated fadeIn">La contraseña es incorrecta</span>
                 <div class="wrap-input100 m-b-16">
                     <input class="input100" type="password" name="Password" placeholder="Contraseña"
-                        [(ngModel)]="selectedLogin.Password" required minlength="8">
+                        [(ngModel)]="selectedLogin.Password" required>
                     <span class="focus-input100"></span>
                 </div>
 
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn" type="submit" (click)="onSubmit(selectedLogin)">
+                    <button class="login100-form-btn" type="submit" (click)="onSubmit(formulario, selectedLogin)">
                         Ingresar
                     </button>
                 </div>
