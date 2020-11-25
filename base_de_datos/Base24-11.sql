@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [moneyCLIP]    Script Date: 6/10/2020 11:24:47 ******/
+/****** Object:  Database [moneyCLIP]    Script Date: 24/11/2020 21:44:12 ******/
 CREATE DATABASE [moneyCLIP]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -78,38 +78,38 @@ ALTER DATABASE [moneyCLIP] SET QUERY_STORE = OFF
 GO
 USE [moneyCLIP]
 GO
-/****** Object:  User [clip]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  User [clip]    Script Date: 24/11/2020 21:44:12 ******/
 CREATE USER [clip] FOR LOGIN [clip] WITH DEFAULT_SCHEMA=[dbo]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [clip]
 GO
-/****** Object:  Table [dbo].[cuenta]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[cuenta]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[cuenta](
-	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[estado] [nchar](10) NULL,
 	[saldo] [money] NULL,
 	[nro_cuenta] [int] NULL,
 	[alias] [nchar](10) NULL,
 	[cbu] [bigint] NULL,
 	[moneda] [nchar](10) NULL,
-	[id_usuario] [smallint] NOT NULL,
+	[id_persona] [int] NOT NULL,
  CONSTRAINT [PK_cuenta] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[localidad]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[localidad]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[localidad](
-	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[nombre] [nchar](20) NOT NULL,
 	[codigo_postal] [smallint] NOT NULL,
 	[id_provincia] [smallint] NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE [dbo].[localidad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[operacion]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[operacion]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +131,7 @@ CREATE TABLE [dbo].[operacion](
 	[tasa_interes] [float] NULL,
 	[monto_maximo] [money] NULL,
 	[situacion_crediticia] [smallint] NULL,
-	[id_cuenta] [smallint] NOT NULL,
+	[id_cuenta] [int] NOT NULL,
 	[id_tipo_operacion] [smallint] NOT NULL,
  CONSTRAINT [PK_Operaciones] PRIMARY KEY CLUSTERED 
 (
@@ -139,7 +139,7 @@ CREATE TABLE [dbo].[operacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[pais]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[pais]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,26 +153,30 @@ CREATE TABLE [dbo].[pais](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[persona]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[persona]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[persona](
-	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[nombre] [char](20) NOT NULL,
 	[apellido] [char](20) NOT NULL,
-	[cuit] [bigint] NOT NULL,
-	[direccion] [char](20) NOT NULL,
-	[id_localidad] [smallint] NOT NULL,
-	[estado_civil] [char](10) NOT NULL,
+	[cuit] [char](20) NULL,
+	[direccion] [char](20) NULL,
+	[id_localidad] [int] NULL,
+	[sexo] [nchar](10) NULL,
+	[celular] [nchar](10) NULL,
+	[foto] [nchar](10) NULL,
+	[email] [nchar](50) NOT NULL,
+	[pass] [char](20) NOT NULL,
  CONSTRAINT [PK_persona] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[provincia]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[provincia]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -187,7 +191,7 @@ CREATE TABLE [dbo].[provincia](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tipo_operacion]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[tipo_operacion]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -201,29 +205,21 @@ CREATE TABLE [dbo].[tipo_operacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[usuario]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  Table [dbo].[usuario]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[usuario](
-	[id] [smallint] IDENTITY(1,1) NOT NULL,
-	[usuario] [nchar](10) NOT NULL,
-	[pass] [char](10) NOT NULL,
-	[id_persona] [smallint] NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario] [nchar](50) NOT NULL,
+	[pass] [char](20) NOT NULL,
+	[id_persona] [int] NOT NULL,
  CONSTRAINT [PK_usuario] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET IDENTITY_INSERT [dbo].[cuenta] ON 
-GO
-INSERT [dbo].[cuenta] ([id], [estado], [saldo], [nro_cuenta], [alias], [cbu], [moneda], [id_usuario]) VALUES (1, N'activo    ', 4500.0000, 58, N'mago      ', NULL, N'peso      ', 1)
-GO
-INSERT [dbo].[cuenta] ([id], [estado], [saldo], [nro_cuenta], [alias], [cbu], [moneda], [id_usuario]) VALUES (2, N'inactivo  ', 0.0000, NULL, N'ojo       ', NULL, NULL, 2)
-GO
-SET IDENTITY_INSERT [dbo].[cuenta] OFF
 GO
 SET IDENTITY_INSERT [dbo].[localidad] ON 
 GO
@@ -233,20 +229,6 @@ INSERT [dbo].[localidad] ([id], [nombre], [codigo_postal], [id_provincia]) VALUE
 GO
 SET IDENTITY_INSERT [dbo].[localidad] OFF
 GO
-SET IDENTITY_INSERT [dbo].[operacion] ON 
-GO
-INSERT [dbo].[operacion] ([id], [monto], [fecha], [tasa_interes], [monto_maximo], [situacion_crediticia], [id_cuenta], [id_tipo_operacion]) VALUES (1, 1000.0000, CAST(N'1900-01-01T00:00:00.000' AS DateTime), NULL, NULL, NULL, 1, 2)
-GO
-INSERT [dbo].[operacion] ([id], [monto], [fecha], [tasa_interes], [monto_maximo], [situacion_crediticia], [id_cuenta], [id_tipo_operacion]) VALUES (2, 3000.0000, CAST(N'1900-01-01T00:00:00.000' AS DateTime), NULL, NULL, NULL, 1, 1)
-GO
-INSERT [dbo].[operacion] ([id], [monto], [fecha], [tasa_interes], [monto_maximo], [situacion_crediticia], [id_cuenta], [id_tipo_operacion]) VALUES (3, 2000.0000, CAST(N'1900-01-01T00:00:00.000' AS DateTime), NULL, NULL, NULL, 1, 1)
-GO
-INSERT [dbo].[operacion] ([id], [monto], [fecha], [tasa_interes], [monto_maximo], [situacion_crediticia], [id_cuenta], [id_tipo_operacion]) VALUES (4, 2000.0000, CAST(N'2020-10-06T10:23:35.807' AS DateTime), 5.5, 3000.0000, 1, 1, 4)
-GO
-INSERT [dbo].[operacion] ([id], [monto], [fecha], [tasa_interes], [monto_maximo], [situacion_crediticia], [id_cuenta], [id_tipo_operacion]) VALUES (5, 500.0000, CAST(N'2020-10-06T10:50:50.160' AS DateTime), NULL, NULL, NULL, 1, 2)
-GO
-SET IDENTITY_INSERT [dbo].[operacion] OFF
-GO
 SET IDENTITY_INSERT [dbo].[pais] ON 
 GO
 INSERT [dbo].[pais] ([id], [nombre]) VALUES (1, N'Argentina           ')
@@ -255,9 +237,11 @@ SET IDENTITY_INSERT [dbo].[pais] OFF
 GO
 SET IDENTITY_INSERT [dbo].[persona] ON 
 GO
-INSERT [dbo].[persona] ([id], [nombre], [apellido], [cuit], [direccion], [id_localidad], [estado_civil]) VALUES (1, N'juan                ', N'alvarez             ', 20364251251, N'urquiza 56          ', 1, N'soltero   ')
+INSERT [dbo].[persona] ([id], [nombre], [apellido], [cuit], [direccion], [id_localidad], [sexo], [celular], [foto], [email], [pass]) VALUES (1, N'alejandro           ', N'torancio            ', NULL, NULL, NULL, NULL, NULL, NULL, N'alejandro@gmail.com                               ', N'abcd1234            ')
 GO
-INSERT [dbo].[persona] ([id], [nombre], [apellido], [cuit], [direccion], [id_localidad], [estado_civil]) VALUES (2, N'pedro               ', N'morini              ', 20334255871, N'tucuma 65           ', 2, N'casado    ')
+INSERT [dbo].[persona] ([id], [nombre], [apellido], [cuit], [direccion], [id_localidad], [sexo], [celular], [foto], [email], [pass]) VALUES (2, N'agustin             ', N'alvarez             ', NULL, NULL, NULL, NULL, NULL, NULL, N'agustin124@gmail.com                              ', N'casa1234            ')
+GO
+INSERT [dbo].[persona] ([id], [nombre], [apellido], [cuit], [direccion], [id_localidad], [sexo], [celular], [foto], [email], [pass]) VALUES (3, N'diana               ', N'acosta              ', NULL, NULL, NULL, NULL, NULL, NULL, N'diana@gmail.com                                   ', N'home1234            ')
 GO
 SET IDENTITY_INSERT [dbo].[persona] OFF
 GO
@@ -279,15 +263,10 @@ INSERT [dbo].[tipo_operacion] ([id], [tipo]) VALUES (4, N'Giro                ')
 GO
 SET IDENTITY_INSERT [dbo].[tipo_operacion] OFF
 GO
-SET IDENTITY_INSERT [dbo].[usuario] ON 
+ALTER TABLE [dbo].[cuenta]  WITH CHECK ADD  CONSTRAINT [FK_cuenta_persona] FOREIGN KEY([id])
+REFERENCES [dbo].[persona] ([id])
 GO
-INSERT [dbo].[usuario] ([id], [usuario], [pass], [id_persona]) VALUES (1, N'ale5      ', N'9874      ', 1)
-GO
-INSERT [dbo].[usuario] ([id], [usuario], [pass], [id_persona]) VALUES (2, N'pedro55   ', N'9789      ', 2)
-GO
-INSERT [dbo].[usuario] ([id], [usuario], [pass], [id_persona]) VALUES (4, N'aatorancio', N'casa      ', 1)
-GO
-SET IDENTITY_INSERT [dbo].[usuario] OFF
+ALTER TABLE [dbo].[cuenta] CHECK CONSTRAINT [FK_cuenta_persona]
 GO
 ALTER TABLE [dbo].[cuenta]  WITH CHECK ADD  CONSTRAINT [FK_cuenta_usuario] FOREIGN KEY([id])
 REFERENCES [dbo].[usuario] ([id])
@@ -319,12 +298,7 @@ REFERENCES [dbo].[pais] ([id])
 GO
 ALTER TABLE [dbo].[provincia] CHECK CONSTRAINT [FK_provincia_pais]
 GO
-ALTER TABLE [dbo].[usuario]  WITH CHECK ADD  CONSTRAINT [FK_usuario_persona] FOREIGN KEY([id_persona])
-REFERENCES [dbo].[persona] ([id])
-GO
-ALTER TABLE [dbo].[usuario] CHECK CONSTRAINT [FK_usuario_persona]
-GO
-/****** Object:  StoredProcedure [dbo].[deposito]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  StoredProcedure [dbo].[deposito]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -359,7 +333,25 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[extraccion]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  StoredProcedure [dbo].[eliminar_persona]    Script Date: 24/11/2020 21:44:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[eliminar_persona]
+	@id int
+AS
+BEGIN
+	DELETE FROM [dbo].[persona]
+      WHERE @id = id
+END
+GO
+/****** Object:  StoredProcedure [dbo].[extraccion]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -394,7 +386,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[giro]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  StoredProcedure [dbo].[giro]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -432,7 +424,83 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[nuevo_usuario]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  StoredProcedure [dbo].[insertar_persona]    Script Date: 24/11/2020 21:44:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[insertar_persona] 
+	
+	@nombre char(20), @apellido char (20), @email nchar(50), @pass char(20)
+	
+AS
+BEGIN
+	INSERT INTO [dbo].[persona]
+           ([nombre]
+           ,[apellido]
+           ,[email]
+           ,[pass])
+     VALUES
+           (@nombre, @apellido, @email, @pass);
+	SELECT CAST(scope_identity() AS int)
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[insertar_usuario]    Script Date: 24/11/2020 21:44:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[insertar_usuario]
+	
+	@usuario nchar(50), @pass char(20), @id_persona int
+AS
+BEGIN
+	INSERT INTO [dbo].[usuario]
+           ([usuario]
+           ,[pass]
+           ,[id_persona])
+     VALUES
+           (@usuario, @pass, @id_persona);
+		SELECT CAST(scope_identity() AS int)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[modificar_persona]    Script Date: 24/11/2020 21:44:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[modificar_persona]
+	@id int, @nombre char(20), @apellido char (20), @cuit char(20), @direccion char(20), @id_localidad int, @estado_civil char(10)
+AS
+BEGIN
+	
+	UPDATE [dbo].[persona]
+   SET [nombre] = @nombre
+      ,[apellido] = @apellido
+      ,[cuit] = @cuit
+      ,[direccion] = @direccion
+      ,[id_localidad] = @id_localidad
+      ,[estado_civil] = @estado_civil
+	WHERE @id = [id]
+END
+GO
+/****** Object:  StoredProcedure [dbo].[nuevo_usuario]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -461,7 +529,85 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[transferencia]    Script Date: 6/10/2020 11:24:48 ******/
+/****** Object:  StoredProcedure [dbo].[obtener_login]    Script Date: 24/11/2020 21:44:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[obtener_login]
+	@email nchar(50), @pass char(20)
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	SELECT [id]
+      ,[nombre]
+      ,[apellido]
+      ,[email]
+      ,[pass]
+	FROM [dbo].[persona] WHERE email= @email and pass = @pass
+END
+GO
+/****** Object:  StoredProcedure [dbo].[obtener_persona]    Script Date: 24/11/2020 21:44:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[obtener_persona]
+	@id smallint
+AS
+
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SELECT [id]
+      ,[nombre]
+      ,[apellido]
+      ,[cuit]
+      ,[direccion]
+      ,[id_localidad]
+      ,[estado_civil]
+  FROM [dbo].[persona] WHERE [id] = @id
+
+   
+RETURN
+GO
+/****** Object:  StoredProcedure [dbo].[obtener_personas]    Script Date: 24/11/2020 21:44:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[obtener_personas]
+	
+AS
+
+	SELECT [id]
+      ,[nombre]
+      ,[apellido]
+      ,[cuit]
+      ,[direccion]
+      ,[id_localidad]
+      ,[estado_civil]
+  FROM [dbo].[persona]
+
+RETURN
+GO
+/****** Object:  StoredProcedure [dbo].[transferencia]    Script Date: 24/11/2020 21:44:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
