@@ -8,8 +8,14 @@
 
 4- Volver a la carpeta de la solucion clonada, pero esta vez en la carpeta de "base_de_datos", alli esta la query de sql server, ejecutar en Sql Server Managment Studio, para que se cree la base de datos que se usara.
 
-#Correr el proyecto:
+# Correr el proyecto:
 
 1-Ejecutar la solucion en VS.
+
 2-Ejecutar en VSC el comando "ng serve -o" para que se levante el proyecto en Angular.
 
+# Nugets de VS necesarios:
+
+*Install-Package Microsoft.AspNet.WebApi.Cors
+
+*Install-Package Microsoft.AspNet.Web.Optimization
