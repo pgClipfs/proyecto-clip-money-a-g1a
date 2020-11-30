@@ -19,3 +19,6 @@
 *Install-Package Microsoft.AspNet.WebApi.Cors
 
 *Install-Package Microsoft.AspNet.Web.Optimization
+
+# Video de como levantar el proyecto paso a paso:
+https://drive.google.com/file/d/1zG0f5Wzddy0szwgWz6be3vDHwOAnjXST/view?usp=sharing
