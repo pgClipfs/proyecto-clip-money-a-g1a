@@ -1,6 +1,7 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 @font-face {
     font-family: 'Bebas Neue';
     src: url('../fonts/bebas-neue/BebasNeue-Regular.ttf');
@@ -14,21 +15,130 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    /* height: 100%; */
+    background-color: transparent;
 }
 
-body,
-html {
+.colorfondohome {
     height: 100%;
-    font-family: 'Bebas Neue', cursive;
+}
+
+body {
+    /* font-family: 'Bebas Neue', cursive; */
+    font-family: 'Oswald', sans-serif;
     background: rgb(38, 10, 66);
-    background: linear-gradient(90deg, rgba(38, 10, 66, 1) 0%, rgba(23, 77, 141, 1) 100%);
+    background: linear-gradient(360deg, rgba(38, 10, 66, 1) 0%, rgba(23, 77, 141, 1) 100%);
 }
 
 
 /*---------------------------------------------*/
 
+.navbar-shared {
+    height: 130px;
+    background: rgb(38, 10, 66);
+    background: linear-gradient(360deg, rgba(38, 10, 66, 1) 0%, rgba(23, 77, 141, 1) 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+nav {
+    margin-right: 10vw;
+}
+
+nav img {
+    margin: 0px 25px 25px;
+    height: 60px;
+}
+
+.logo-navbar {
+    margin-left: 10vw;
+}
+
+.logo-navbar img {
+    height: 150px;
+}
+
+.saldo-disponible h1 {
+    font-size: 100px;
+    color: #89f581;
+}
+
+.lineaMov {
+    background-color: white;
+    width: 60%;
+}
+
+.lineaCompletarDatos {
+    background-color: #89f581;
+    height: 2px;
+    /* width: 60%; */
+}
+
+.hrlinea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linea {
+    background-color: white;
+    height: 2px;
+    width: 80%;
+}
+
+.section-movimientos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.titulos-movimientos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto 70px;
+}
+
+.mov-col-una {
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.concepto {
+    font-size: 18px;
+    /* font-weight: bold; */
+    font-style: italic;
+}
+
+.logosytextoscentrales {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.img1 {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.img2 {
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+
+.logos-centrales img {
+    height: 50px;
+    grid-column-start: 2;
+}
+
+.logo-config {
+    height: 40px;
+}
+
+p img {
+    height: 40px;
+}
+
 a {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #FFFFFF;
@@ -48,6 +158,14 @@ a:hover {
     color: #63CD5C;
 }
 
+.btn-completarDatos:hover {
+    background-color: transparent;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #63CD5C;
+    border-style: solid;
+}
+
 
 /*---------------------------------------------*/
 
@@ -61,7 +179,7 @@ h6 {
 }
 
 p {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #FFFFFF;
@@ -248,7 +366,7 @@ iframe {
 /*---------------------------------------------*/
 
 .input100 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Oswald', sans-serif;
     color: #FFFFFF;
     line-height: 1.2;
     font-size: 18px;
