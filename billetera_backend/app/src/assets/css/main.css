@@ -37,16 +37,10 @@ body {
     height: 130px;
     background: rgb(38, 10, 66);
     background: linear-gradient(360deg, rgba(38, 10, 66, 1) 0%, rgba(23, 77, 141, 1) 100%);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-nav {
-    margin-right: 10vw;
 }
 
 nav img {
-    margin: 0px 25px 25px;
+    margin: 60px 15px 0px;
     height: 60px;
 }
 
@@ -86,47 +80,18 @@ nav img {
     width: 80%;
 }
 
-.section-movimientos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.titulos-movimientos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: auto 70px;
-}
-
-.mov-col-una {
-    /* display: flex;
-    flex-direction: column; */
-}
-
 .concepto {
     font-size: 18px;
     /* font-weight: bold; */
     font-style: italic;
 }
 
-.logosytextoscentrales {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-}
-
-.img1 {
-    grid-column-start: 1;
-    grid-row-start: 1;
-}
-
-.img2 {
-    grid-column-start: 2;
-    grid-row-start: 1;
-}
-
-.logos-centrales img {
+.logosytextoscentrales img {
     height: 50px;
-    grid-column-start: 2;
+}
+
+.logosytextoscentrales {
+    padding: 0 15vw;
 }
 
 .logo-config {

@@ -42,7 +42,7 @@ namespace billetera_backend.Controllers
         }*/
 
         // GET: api/Persona
-        //[Authorize]
+        [Authorize]
         public IEnumerable<Persona> Get()
         {
             GestorPersona gPersona = new GestorPersona();
