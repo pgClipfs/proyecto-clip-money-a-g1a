@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Agustin\Desktop\CLIP\project\proyecto-clip-money-a-g1a\billetera_backend\app\src\styles.css */"OmL/");
+module.exports = __webpack_require__(/*! C:\Users\claudio\source\repos\proyecto-clip-money-a-g1a\billetera_backend\app\src\styles.css */"OmL/");
 
 
 /***/ }),

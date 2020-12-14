@@ -1117,7 +1117,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /**
- * @license Angular v10.2.1
+ * @license Angular v10.2.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -5991,12 +5991,12 @@ const ɵ0$1 = () => Promise.resolve(null);
  * ```
  * I.e. `ngModel` can export itself on the element and then be used in the template.
  * Normally, this would result in expressions before the `input` that use the exported directive
- * to have and old value as they have been
+ * to have an old value as they have been
  * dirty checked before. As this is a very common case for `ngModel`, we added this second change
  * detection run.
  *
  * Notes:
- * - this is just one extra run no matter how many `ngModel` have been changed.
+ * - this is just one extra run no matter how many `ngModel`s have been changed.
  * - this is a general problem when using `exportAs` for directives!
  */
 const resolvedPromise$1 = (ɵ0$1)();
@@ -6014,16 +6014,17 @@ const resolvedPromise$1 = (ɵ0$1)();
  * `ngModel` selector to activate it.
  *
  * It accepts a domain model as an optional `Input`. If you have a one-way binding
- * to `ngModel` with `[]` syntax, changing the value of the domain model in the component
+ * to `ngModel` with `[]` syntax, changing the domain model's value in the component
  * class sets the value in the view. If you have a two-way binding with `[()]` syntax
- * (also known as 'banana-box syntax'), the value in the UI always syncs back to
+ * (also known as 'banana-in-a-box syntax'), the value in the UI always syncs back to
  * the domain model in your class.
  *
- * To inspect the properties of the associated `FormControl` (like validity state),
+ * To inspect the properties of the associated `FormControl` (like the validity state),
  * export the directive into a local template variable using `ngModel` as the key (ex:
- * `#myVar="ngModel"`). You then access the control using the directive's `control` property, but
- * most properties used (like `valid` and `dirty`) fall through to the control anyway for direct
- * access. See a full list of properties directly available in `AbstractControlDirective`.
+ * `#myVar="ngModel"`). You can then access the control using the directive's `control` property.
+ * However, the most commonly used properties (like `valid` and `dirty`) also exist on the control
+ * for direct access. See a full list of properties directly available in
+ * `AbstractControlDirective`.
  *
  * @see `RadioControlValueAccessor`
  * @see `SelectControlValueAccessor`
@@ -6067,15 +6068,16 @@ const resolvedPromise$1 = (ɵ0$1)();
  * <!-- form value: {login: ''} -->
  * ```
  *
- * ### Setting the ngModel name attribute through options
+ * ### Setting the ngModel `name` attribute through options
  *
- * The following example shows you an alternate way to set the name attribute. The name attribute is
- * used within a custom form component, and the name `@Input` property serves a different purpose.
+ * The following example shows you an alternate way to set the name attribute. Here,
+ * an attribute identified as name is used within a custom form control component. To still be able
+ * to specify the NgModel's name, you must specify it using the `ngModelOptions` input instead.
  *
  * ```html
  * <form>
- *   <my-person-control name="Nancy" ngModel [ngModelOptions]="{name: 'user'}">
- *   </my-person-control>
+ *   <my-custom-form-control name="Nancy" ngModel [ngModelOptions]="{name: 'user'}">
+ *   </my-custom-form-control>
  * </form>
  * <!-- form value: {user: ''} -->
  * ```
@@ -7905,7 +7907,7 @@ FormBuilder.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjec
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('10.2.1');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('10.2.2');
 
 /**
  * @license
@@ -14744,7 +14746,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /**
- * @license Angular v10.2.1
+ * @license Angular v10.2.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -23361,8 +23363,10 @@ function markViewDirty(lView) {
  */
 function scheduleTick(rootContext, flags) {
     const nothingScheduled = rootContext.flags === 0 /* Empty */;
-    rootContext.flags |= flags;
     if (nothingScheduled && rootContext.clean == _CLEAN_PROMISE) {
+        // https://github.com/angular/angular/issues/39296
+        // should only attach the flags when really scheduling a tick
+        rootContext.flags |= flags;
         let res;
         rootContext.clean = new Promise((r) => res = r);
         rootContext.scheduler(() => {
@@ -35811,7 +35815,7 @@ class Version {
 /**
  * @publicApi
  */
-const VERSION = new Version('10.2.1');
+const VERSION = new Version('10.2.2');
 
 /**
  * @license
@@ -38929,18 +38933,25 @@ function assertSameOrNotExisting(id, type, incoming) {
     }
 }
 function registerNgModuleType(ngModuleType) {
-    if (ngModuleType.ɵmod.id !== null) {
-        const id = ngModuleType.ɵmod.id;
-        const existing = modules.get(id);
-        assertSameOrNotExisting(id, existing, ngModuleType);
-        modules.set(id, ngModuleType);
-    }
-    let imports = ngModuleType.ɵmod.imports;
-    if (imports instanceof Function) {
-        imports = imports();
-    }
-    if (imports) {
-        imports.forEach(i => registerNgModuleType(i));
+    const visited = new Set();
+    recurse(ngModuleType);
+    function recurse(ngModuleType) {
+        // The imports array of an NgModule must refer to other NgModules,
+        // so an error is thrown if no module definition is available.
+        const def = getNgModuleDef(ngModuleType, /* throwNotFound */ true);
+        const id = def.id;
+        if (id !== null) {
+            const existing = modules.get(id);
+            assertSameOrNotExisting(id, existing, ngModuleType);
+            modules.set(id, ngModuleType);
+        }
+        const imports = maybeUnwrapFn(def.imports);
+        for (const i of imports) {
+            if (!visited.has(i)) {
+                visited.add(i);
+                recurse(i);
+            }
+        }
     }
 }
 function clearModulesForTest() {
@@ -47064,7 +47075,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ɵgetDOM", function() { return _angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"]; });
 
 /**
- * @license Angular v10.2.1
+ * @license Angular v10.2.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -49195,7 +49206,7 @@ function elementMatches(n, selector) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('10.2.1');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('10.2.2');
 
 /**
  * @license
@@ -50483,7 +50494,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵsetRootDomAdapter", function() { return setRootDomAdapter; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v10.2.1
+ * @license Angular v10.2.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -55768,7 +55779,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('10.2.1');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('10.2.2');
 
 /**
  * @license
@@ -57158,7 +57169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /**
- * @license Angular v10.2.1
+ * @license Angular v10.2.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -59458,7 +59469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /**
- * @license Angular v10.2.1
+ * @license Angular v10.2.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -61174,6 +61185,13 @@ function createUrlTree(route, urlTree, commands, queryParams, fragment) {
 function isMatrixParams(command) {
     return typeof command === 'object' && command != null && !command.outlets && !command.segmentPath;
 }
+/**
+ * Determines if a given command has an `outlets` map. When we encounter a command
+ * with an outlets k/v map, we need to apply each outlet individually to the existing segment.
+ */
+function isCommandWithOutlets(command) {
+    return typeof command === 'object' && command != null && command.outlets;
+}
 function tree(oldSegmentGroup, newSegmentGroup, urlTree, queryParams, fragment) {
     let qp = {};
     if (queryParams) {
@@ -61206,7 +61224,7 @@ class Navigation {
         if (isAbsolute && commands.length > 0 && isMatrixParams(commands[0])) {
             throw new Error('Root segment cannot have matrix parameters');
         }
-        const cmdWithOutlet = commands.find(c => typeof c === 'object' && c != null && c.outlets);
+        const cmdWithOutlet = commands.find(isCommandWithOutlets);
         if (cmdWithOutlet && cmdWithOutlet !== last(commands)) {
             throw new Error('{outlets:{}} has to be the last command');
         }
@@ -61296,14 +61314,8 @@ function createPositionApplyingDoubleDots(group, index, numberOfDoubleDots) {
     }
     return new Position(g, false, ci - dd);
 }
-function getPath(command) {
-    if (typeof command === 'object' && command != null && command.outlets) {
-        return command.outlets[PRIMARY_OUTLET];
-    }
-    return `${command}`;
-}
 function getOutlets(commands) {
-    if (typeof commands[0] === 'object' && commands[0] !== null && commands[0].outlets) {
+    if (isCommandWithOutlets(commands[0])) {
         return commands[0].outlets;
     }
     return { [PRIMARY_OUTLET]: commands };
@@ -61364,7 +61376,14 @@ function prefixedWith(segmentGroup, startIndex, commands) {
         if (currentCommandIndex >= commands.length)
             return noMatch;
         const path = segmentGroup.segments[currentPathIndex];
-        const curr = getPath(commands[currentCommandIndex]);
+        const command = commands[currentCommandIndex];
+        // Do not try to consume command as part of the prefixing if it has outlets because it can
+        // contain outlets other than the one being processed. Consuming the outlets command would
+        // result in other outlets being ignored.
+        if (isCommandWithOutlets(command)) {
+            break;
+        }
+        const curr = `${command}`;
         const next = currentCommandIndex < commands.length - 1 ? commands[currentCommandIndex + 1] : null;
         if (currentPathIndex > 0 && curr === undefined)
             break;
@@ -61386,9 +61405,9 @@ function createNewSegmentGroup(segmentGroup, startIndex, commands) {
     const paths = segmentGroup.segments.slice(0, startIndex);
     let i = 0;
     while (i < commands.length) {
-        if (typeof commands[i] === 'object' && commands[i] !== null &&
-            commands[i].outlets !== undefined) {
-            const children = createNewSegmentChildren(commands[i].outlets);
+        const command = commands[i];
+        if (isCommandWithOutlets(command)) {
+            const children = createNewSegmentChildren(command.outlets);
             return new UrlSegmentGroup(paths, children);
         }
         // if we start with an object literal, we need to reuse the path part from the segment
@@ -61398,7 +61417,7 @@ function createNewSegmentGroup(segmentGroup, startIndex, commands) {
             i++;
             continue;
         }
-        const curr = getPath(commands[i]);
+        const curr = isCommandWithOutlets(command) ? command.outlets[PRIMARY_OUTLET] : `${command}`;
         const next = (i < commands.length - 1) ? commands[i + 1] : null;
         if (curr && next && isMatrixParams(next)) {
             paths.push(new UrlSegment(curr, stringify(next)));
@@ -65259,7 +65278,7 @@ function provideRouterInitializer() {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('10.2.1');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('10.2.2');
 
 /**
  * @license
