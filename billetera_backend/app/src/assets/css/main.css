@@ -157,6 +157,13 @@ iframe {
     line-height: 1.4;
 }
 
+.txt2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+    color: cadetblue;
+   
+}
+
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
@@ -229,6 +236,14 @@ iframe {
 
 .wrap-input100 {
     width: 100%;
+    position: relative;
+    border: 1px solid #63CD5C;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.wrap-input200 {
+    width: 50%;
     position: relative;
     border: 1px solid #63CD5C;
     border-radius: 3px;
@@ -395,6 +410,38 @@ iframe {
     transition: all 0.4s;
 }
 
+.login200-form-btn {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 50%;
+    height: 62px;
+    background-color: #63CD5C;
+    border-radius: 3px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.login200-form-btn:hover {
+    background-color: transparent;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #63CD5C;
+    border-style: solid;
+}
+
 .login100-form-btn:hover {
     background-color: transparent;
     border-radius: 3px;
@@ -471,3 +518,5 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
+
+

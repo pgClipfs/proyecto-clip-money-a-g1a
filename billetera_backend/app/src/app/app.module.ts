@@ -13,6 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { InterceptorService } from './services/interceptor.service';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { CvuComponent } from './components/cvu/cvu.component';
+import { CambiarContrComponent } from './components/cambiar-contr/cambiar-contr.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     LoginComponent,
     HomeComponent,
     RegistroComponent,
-    NavbarComponent
+    NavbarComponent,
+    CvuComponent,
+    CambiarContrComponent
 
   ],
   imports: [
