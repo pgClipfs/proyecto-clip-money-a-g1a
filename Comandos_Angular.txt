@@ -1,0 +1,16 @@
+-Para crear un componente: 
+	ng generate component "ruta"(las comillas no van)
+	Ej: 
+	"ng generate component components/nombre_comp" 
+	(las comillas no van)
+
+-Para crear un modelo:
+	ng generate class "nombre_clase" --type=model
+	(las comillas no van)
+
+-Para crear un servicio:
+	ng generate service "ruta"(las comillas no van)
+	(las comillas no van)
+	Ej: 
+	"ng g service services/nombre_service" 
+	(las comillas no van)
