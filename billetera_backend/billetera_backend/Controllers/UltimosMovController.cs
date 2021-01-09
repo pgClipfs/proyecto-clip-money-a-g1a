@@ -9,18 +9,14 @@ using System.Web.Http.Cors;
 
 namespace billetera_backend.Controllers
 {
-
     
-    public class MostrarSaldosController : ApiController
+    public class UltimosMovController : ApiController
     {
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-
-        public IHttpActionResult GetCuenta(int id)
+        public IEnumerable<Operacion> GetOperaciones(int id)
         {
-
-            GestorCuenta gestorCuenta = new GestorCuenta();
-            return Ok( gestorCuenta.ObtenerPorId(id));
+            GestorOperaciones gestor = new GestorOperaciones();
+            return  gestor.ObtenerPorId(id);
         }
-
     }
 }

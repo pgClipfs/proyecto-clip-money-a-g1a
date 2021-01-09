@@ -3,6 +3,7 @@ import { ApiProvinciasService } from '../../services/api-provincias.service';
 import { Provincia } from '../../models/provincia.model';
 import { Localidad } from '../../models/localidad.model';
 
+
 @Component({
   selector: 'app-completar-datos',
   templateUrl: './completar-datos.component.html',
@@ -13,6 +14,7 @@ export class CompletarDatosComponent implements OnInit {
   provinces: any[] = [];
   localities: any[] = [];
 
+  
   public provincias: Provincia[];
   selectedProvincia: Provincia = new Provincia();
   public localidades: Localidad[];
@@ -38,6 +40,8 @@ export class CompletarDatosComponent implements OnInit {
       console.log(this.localities);
     } );
   }
+
+
 
   public onSelect(item: Provincia) {
     this.selectedProvincia = item;

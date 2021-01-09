@@ -37,7 +37,7 @@ namespace billetera_backend.Models
                     
 
                     cuenta = new Cuenta(estado,saldo,nroCuenta,alias,cbu,moneda);
-                    //p = new Persona(id, nombre, apellido, cuit, direccion, id_localidad);
+                    
                 }
 
                 dr.Close();

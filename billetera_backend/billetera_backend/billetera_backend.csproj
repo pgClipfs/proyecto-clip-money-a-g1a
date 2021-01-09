@@ -159,6 +159,7 @@
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\UltimosMovController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -168,6 +169,7 @@
     <Compile Include="Models\Extraccion.cs" />
     <Compile Include="Models\GestorCuenta.cs" />
     <Compile Include="Models\GestorLogin.cs" />
+    <Compile Include="Models\GestorOperaciones.cs" />
     <Compile Include="Models\GestorPersona.cs" />
     <Compile Include="Models\Giro.cs" />
     <Compile Include="Models\LoginRequest.cs" />

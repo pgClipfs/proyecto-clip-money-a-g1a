@@ -8,7 +8,7 @@ namespace billetera_project.Models
 {
     public class Giro: Operacion
     {
-        public Giro(decimal monto, DateTime fecha, string codigo) : base(monto, fecha, codigo)
+        public Giro(decimal monto, DateTime fecha, int codigo) : base(monto, fecha, codigo)
         {
 
         }
