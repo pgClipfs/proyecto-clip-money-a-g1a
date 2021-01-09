@@ -53,10 +53,10 @@ namespace billetera_backend.Models
                     string apellido = dr.GetString(2).Trim();
                     string cuit = dr.GetString(3).Trim();
                     string direccion = dr.GetString(4).Trim();
-                    int id_localidad = dr.GetInt32(5); 
+                    //int id_localidad = dr.GetInt32(5); 
                     
 
-                    Persona p = new Persona(id, nombre, apellido, cuit, direccion, id_localidad);
+                    Persona p = new Persona(id, nombre, apellido, cuit, direccion);
                     lista.Add(p);
                 }
 
@@ -105,10 +105,10 @@ namespace billetera_backend.Models
                     string apellido = dr.GetString(2).Trim();
                     string cuit = dr.GetString(3).Trim();
                     string direccion = dr.GetString(4).Trim();
-                    int id_localidad = dr.GetInt32(5);
+                    
                    
 
-                    p = new Persona(id, nombre, apellido, cuit, direccion, id_localidad);
+                    p = new Persona(id, nombre, apellido, cuit, direccion);
                 }
 
                 dr.Close();
@@ -133,7 +133,7 @@ namespace billetera_backend.Models
                 comm.Parameters.Add(new SqlParameter("@apellido", p.Apellido));
                 comm.Parameters.Add(new SqlParameter("@cuit", p.Cuit));
                 comm.Parameters.Add(new SqlParameter("@direccion", p.Direccion));
-                comm.Parameters.Add(new SqlParameter("@id_localidad", p.IdLocalidad));
+                
                 
                 comm.Parameters.Add(new SqlParameter("@id", p.Id));
 
