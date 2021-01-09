@@ -7,23 +7,27 @@ namespace billetera_backend.Models
 {
     public class Cuenta
     {
+        
         private string estado;
         private decimal saldo;
-        private string nroCuenta;
+        private int nroCuenta;
         private string alias;
-        private string cbu;
+        private long cbu;
         private string moneda;
 
-        public Cuenta(string estado, decimal saldo, string nroCuenta, string alias, string cbu, string moneda)
+        public Cuenta( string estado, decimal saldo, int nroCuenta, string alias, long cbu, string moneda)
         {
+            
             this.estado = estado;
             this.saldo = saldo;
             this.nroCuenta = nroCuenta;
+            this.cbu = cbu;
             this.alias = alias;
             this.moneda = moneda;
 
         }
 
+     
         public string Estado
         {
             get { return estado; }
@@ -36,7 +40,7 @@ namespace billetera_backend.Models
             set { saldo = value; }
         }
 
-        public string NroCuenta
+        public int NroCuenta
         {
             get { return nroCuenta; }
             set { nroCuenta = value; }
@@ -47,9 +51,10 @@ namespace billetera_backend.Models
             get { return alias; }
         }
 
-        public string Cbu
+        public long Cbu
         {
             get { return cbu; }
+            set { cbu = value; }
         }
 
         public string Moneda

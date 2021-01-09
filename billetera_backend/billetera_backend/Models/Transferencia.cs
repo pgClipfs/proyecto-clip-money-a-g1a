@@ -1,4 +1,5 @@
-﻿using System;
+﻿using billetera_backend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace billetera_project.Models
         private string aliasDestinatario;
 
 
-        public Transferencia(decimal monto, DateTime fecha, string codigo, string cbuDestinatario, string aliasDestinatario) : base(monto, fecha, codigo)
+        public Transferencia(decimal monto, DateTime fecha, int codigo, string cbuDestinatario, string aliasDestinatario) : base(monto, fecha, codigo)
         {
             this.cbuDestinatario = cbuDestinatario;
             this.aliasDestinatario = aliasDestinatario;

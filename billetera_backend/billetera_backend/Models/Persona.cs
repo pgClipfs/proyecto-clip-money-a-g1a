@@ -12,7 +12,7 @@ namespace billetera_backend.Models
         private string apellido;
         private string cuit;
         private string direccion;
-        private int idLocalidad;
+        
         private string email;
         private string pass;
 
@@ -21,14 +21,14 @@ namespace billetera_backend.Models
 
         }
 
-        public Persona(int id, string nombre, string apellido, string cuit, string direccion, int idLocalidad)
+        public Persona(int id, string nombre, string apellido, string cuit, string direccion )
         {
             this.id = id;
             this.nombre = nombre;
             this.apellido = apellido;
             this.cuit = cuit;
             this.direccion = direccion;
-            this.idLocalidad = idLocalidad;
+            
 
         }
 
@@ -71,11 +71,7 @@ namespace billetera_backend.Models
         }
 
 
-        public int IdLocalidad
-        {
-            get { return idLocalidad; }
-            set { idLocalidad = value; }
-        }
+      
 
         public string Email { get => email; set => email = value; }
 

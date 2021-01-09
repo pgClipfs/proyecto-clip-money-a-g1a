@@ -9,9 +9,11 @@ namespace billetera_backend.Models
     {
         private decimal monto;
         private DateTime fecha;
-        private string codigo;
+        private int codigo;
 
-        public Operacion(decimal monto, DateTime fecha, string codigo)
+      
+
+        public Operacion(decimal monto, DateTime fecha, int codigo)
         {
             this.monto = monto;
             this.fecha = fecha;
@@ -27,11 +29,13 @@ namespace billetera_backend.Models
         public DateTime Fecha
         {
             get { return fecha; }
+            set { fecha = value; }
         }
 
-        public string Codigo
+        public int Codigo
         {
             get { return codigo; }
+            set { codigo = value;}
         }
     }
 }
