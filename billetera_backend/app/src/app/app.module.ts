@@ -14,6 +14,7 @@ import { InterceptorService } from './services/interceptor.service';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CompletarDatosComponent } from './components/completar-datos/completar-datos.component';
+import { PepeComponent } from './components/equis/pepe/pepe.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CompletarDatosComponent } from './components/completar-datos/completar-
     HomeComponent,
     RegistroComponent,
     NavbarComponent,
-    CompletarDatosComponent
+    CompletarDatosComponent,
+    PepeComponent
 
   ],
   imports: [

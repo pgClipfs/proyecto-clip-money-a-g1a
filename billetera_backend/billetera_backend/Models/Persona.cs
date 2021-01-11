@@ -16,10 +16,6 @@ namespace billetera_backend.Models
         private string email;
         private string pass;
 
-        public Persona()
-        {
-
-        }
 
         public Persona(int id, string nombre, string apellido, string cuit, string direccion )
         {
