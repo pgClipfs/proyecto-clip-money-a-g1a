@@ -153,8 +153,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MailSenderController.cs" />
     <Compile Include="Controllers\MostrarSaldosController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
@@ -166,6 +168,7 @@
     </Compile>
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\Deposito.cs" />
+    <Compile Include="Models\EmailClass.cs" />
     <Compile Include="Models\Extraccion.cs" />
     <Compile Include="Models\GestorCuenta.cs" />
     <Compile Include="Models\GestorLogin.cs" />
@@ -197,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\MailSender\" />
     <Folder Include="Views\MostrarSaldos\" />
   </ItemGroup>
   <PropertyGroup>
