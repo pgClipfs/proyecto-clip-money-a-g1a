@@ -8,4 +8,6 @@ export class Persona {
     IdLocalidad: number;
     Email: string;
     Pass: string;
+    Dni_F: string;
+    Dni_D: string
 }
