@@ -156,7 +156,6 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MailSenderController.cs" />
     <Compile Include="Controllers\MostrarSaldosController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
