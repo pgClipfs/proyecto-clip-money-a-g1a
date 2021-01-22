@@ -15,8 +15,14 @@ namespace billetera_backend
 
             routes.MapRoute(
                 name: "Default",
-                url: "{*.}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Archivo",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Archivo", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
