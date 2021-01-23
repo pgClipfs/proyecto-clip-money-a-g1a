@@ -14,7 +14,8 @@ import { InterceptorService } from './services/interceptor.service';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CvuComponent } from './components/cvu/cvu.component';
-import { CambiarContrComponent } from './components/cambiar-contr/cambiar-contr.component';
+import { TranferenciaComponent } from './components/tranferencia/tranferencia.component';
+import { AgregarcbuComponent } from './components/agregarcbu/agregarcbu.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CambiarContrComponent } from './components/cambiar-contr/cambiar-contr.
     RegistroComponent,
     NavbarComponent,
     CvuComponent,
-    CambiarContrComponent
+    TranferenciaComponent,
+    AgregarcbuComponent
 
   ],
   imports: [

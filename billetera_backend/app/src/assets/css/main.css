@@ -129,6 +129,12 @@ label {
     margin: 0;
 }
 
+.border {
+    display: inline-block;
+    width: 50%;
+    height: 600px;
+    margin: 6px;
+  }
 
 /*---------------------------------------------*/
 
@@ -160,10 +166,33 @@ iframe {
 .txt2 {
     font-family: 'Bebas Neue', cursive;
     font-size: 25px;
-    color: cadetblue;
-   
+    color: cadetblue;   
 }
 
+.txt3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+    color: cadetblue; 
+    text-align: center;   
+}
+
+.column {
+    float: left;
+    width: 50%;
+    
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+ 
+  .center {
+    margin: auto;
+    width: 70%;
+    text-align: center; 
+    
+  }
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
@@ -243,7 +272,7 @@ iframe {
 }
 
 .wrap-input200 {
-    width: 50%;
+    width: 100%;
     position: relative;
     border: 1px solid #63CD5C;
     border-radius: 3px;
@@ -273,6 +302,22 @@ iframe {
     height: 62px;
     padding: 0 20px 0 38px;
 }
+ 
+.input109 {
+    font-family: 'Ubuntu', sans-serif;
+    color: #FFFFFF;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    background: transparent;
+    height: 62px;
+    padding: 0 20px 0 38px;
+    text-align: center;
+}
+
+
+
 
 
 /*------------------------------------------------------------------
@@ -386,6 +431,20 @@ iframe {
     flex-wrap: wrap;
 }
 
+.container-login100-form-btn1 {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
 .login100-form-btn {
     font-family: 'Bebas Neue', cursive;
     font-size: 22px;
@@ -427,6 +486,30 @@ iframe {
     width: 50%;
     height: 62px;
     background-color: #63CD5C;
+    border-radius: 3px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.login300-form-btn {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 40%;
+    height: 50px;
+    background-color: cadetblue;
     border-radius: 3px;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;

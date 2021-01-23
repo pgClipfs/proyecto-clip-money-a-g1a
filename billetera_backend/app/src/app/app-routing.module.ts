@@ -7,6 +7,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { RegistroComponent } from './components/registro/registro.component'
+import { TranferenciaComponent } from './components/tranferencia/tranferencia.component';
+import { AgregarcbuComponent } from './components/agregarcbu/agregarcbu.component';
+
+
 
 
 const routes: Routes = [
@@ -17,6 +21,8 @@ const routes: Routes = [
   { path: 'micvu', component: CvuComponent},
   { path: 'cambiarcontr', component: CambiarContrComponent},
   { path: '', component: LoginComponent },
+  { path: 'agregarcbu', component: AgregarcbuComponent },
+  { path: 'transferencia', component: TranferenciaComponent },
   { path: '**', redirectTo: '' }
 ];
 
