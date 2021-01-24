@@ -20,13 +20,13 @@
         <div class="col-md-6 col-lg-offset-3">
             <div class="form-group">
                 @Html.LabelFor(d => d.Archivo1)
-                @Html.TextBoxFor(d => d.Archivo1, new { @class = "form-control", type = "file", accept = ".png" })
+                @Html.TextBoxFor(d => d.Archivo1, new { @class = "form-control", type = "file", accept = "*" })
                 @Html.ValidationMessageFor(d => d.Archivo1, "", new { @class = "text-danger" })
 
             </div>
             <div class="form-group">
                 @Html.LabelFor(d => d.Archivo2)
-                @Html.TextBoxFor(d => d.Archivo2, new { @class = "form-control", type = "file", accept = ".png" })
+                @Html.TextBoxFor(d => d.Archivo2, new { @class = "form-control", type = "file", accept = "*" })
                 @Html.ValidationMessageFor(d => d.Archivo2, "", new { @class = "text-danger" })
 
             </div>

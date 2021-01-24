@@ -1,104 +1,106 @@
 <app-navbar></app-navbar>
 
-<div class="container mt-3 animated fadeInRight ">
-    <h4 class="text-white">Completar datos: </h4>
-    <hr class="lineaCompletarDatos">
-
+<div class="container mt-3 animated fadeInRight">
+    
     <div class="d-flex justify-content-center">
-
-
-        <form class="mt-5 text-white col-8" autocomplete="off">
-            <div>
-
+        |
+    <form class="px-4 col-6 text-white" autocomplete="off" style="border: 1px solid white; border-radius: 0.55rem;">
+        <br>
+        <h4 class="py-3 text-white">Completa Datos</h4>
+        <hr class="lineaCompletarDatos">
+        <br>
+        <div>
                 <div class="form-group row">
                     <label class="col-2 col-form-label">Nombre</label>
-                    <div class="col-8">
+                    <div class="col-9">
                         <input class="form-control" type="text" placeholder="Nombre">
                     </div>
                 </div>
-
+                <br>
                 <div class="form-group row">
                     <label class="col-2 col-form-label">Apellido</label>
-                    <div class="col-8">
-
+                    <div class="col-9">
                         <input class="form-control" type="text" placeholder="Apellido">
                     </div>
                 </div>
-
             </div>
-
-
+            <br>
             <div class="form-group row">
                 <label class="col-2 col-form-label">Provincia</label>
                 <div class="col-4">
-
-                    <select class="form-control" name="provincia" ngModel required #nombre>
-                <option *ngFor="let provincia of provinces"   [value]="provincia" >
-                    
-                    {{provincia}}
-                </option >
-            </select>
-
-
+                    <select class="form-select" name="provincia" ngModel required #nombre>
+                        <option *ngFor="let provincia of provinces"  [value]="provincia">
+                            {{provincia}}
+                        </option >
+                        <option selected>Selecciona</option>
+                    </select>
                 </div>
             </div>
-
+            <br>
             <div class="form-group row">
                 <label class="col-2 col-form-label">Localidad</label>
-                <div class="col-8">
-
-                    <select class="form-control" name="localidad" ngModel required (click)="getLocalidades(nombre.value)"> 
-                <option *ngFor="let localidad of localities" [value]="localidad" >
-                    {{localidad}}
-                </option>
-            </select>
-
+                <div class="col-4">
+                <select class="form-select" name="localidad" ngModel required (click)="getLocalidades(nombre.value)"> 
+                    <option selected>Selecciona</option>
+                    <option *ngFor="let localidad of localities" [value]="localidad" >
+                        {{localidad}}
+                    </option>
+                </select>
                 </div>
             </div>
-
+            <br>
             <div class="form-group row">
                 <label class="col-2 col-form-label">Direccion</label>
-                <div class="col-8">
-
+                <div class="col-9">
                     <input class="form-control" type="text" placeholder="Direccion">
                 </div>
             </div>
-
+            <br>
             <div class="form-group row">
                 <label class="col-2 col-form-label">Telefono</label>
-                <div class="col-8">
-
+                <div class="col-9">
                     <input class="form-control" type="number" placeholder="Telefono">
                 </div>
             </div>
-
+            <br>
             <div class="form-group row">
                 <label class="col-2 col-form-label">Correo</label>
-                <div class="col-8">
-
+                <div class="col-9">
                     <input class="form-control" type="email" placeholder="Correo electrónico">
                 </div>
             </div>
-
+            <br>
             <div class="form-group row">
                 <label class="col-2 col-form-label">Password</label>
-                <div class="col-8">
-
+                <div class="col-9">
                     <input class="form-control" type="password" placeholder="Contraseña">
                 </div>
             </div>
-
-
+            <br><br>
+            <div> <!-- carga de imagenes -->
+                <div>  
+                    <img src="../../../assets/images/Recursos Money Clip-04.png" class="img-fluid mx-4" width="15%">
+                    <INPUT id="fuArchivo" type="file" runat="server" name="oFile">
+                </div> 
+                <br>
+                <div>  
+                    <img src="../../../assets/images/Recursos Money Clip-05.png" class="img-fluid mx-4" width="15%">
+                    <INPUT id="fuArchivorostro" type="file" runat="server" name="oFile">
+                </div> 
+                <div class="text-center"> 
+                <button class="btn btn-outline-success text-white" id="BtnAceptar" type="submit" text="Subir" runat="server">Enviar</button>
+                </div> 
+            </div>
+            <br>
             <div class="form-group row">
-                <label class="col-2 col-form-label">&nbsp;</label>
-                <div class="input-group col-md-8">
+                <label>&nbsp;</label>
+                <div class="form-group w-100">
                     <button type="submit" class="login100-form-btn">
-        Guardar
-      </button>
+                        Guardar
+                    </button>
                 </div>
             </div>
-
-        </form>
-
+            <br><br>
+    </form>
     </div>
 </div>

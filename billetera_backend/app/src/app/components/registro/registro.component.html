@@ -12,7 +12,6 @@
                 <div class="wrap-input100 m-b-16">
                     <input class="input100" type="text" name="Nombre" placeholder="Nombres"
                         [(ngModel)]="selectedPersona.Nombre" required>
-
                     <span class="focus-input100"></span>
                 </div>
 
@@ -57,30 +56,19 @@
                         </a>
                     </div>
                 </div>
-                
-                <div>
-                    
-                    <div>  <label> Photo DNI</label>
-                    <INPUT id="fuArchivo" type="file" runat="server" NAME="oFile">
-                    </div> 
-                    <div>  <label> Photo Rostro</label>
-                    <INPUT id="fuArchivorostro" type="file" runat="server" NAME="oFile">
-                    </div> 
-                    <div> 
-                    <button id="BtnAceptar" type="submit" text="Subir" runat="server">enviar</button>
-                    </div> 
-                </div>
 
                 <div class="container-login100-form-btn m-t-17">
                     <button class="login100-form-btn" type="submit" (click)="onSubmit(formulario, selectedPersona)">
                         Crear cuenta
                     </button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
+
+
+
 
 <!-- <form id="Form1" method="post" runat="server" EncType="multipart/form-data" action="WebForm1.aspx">
     <div> 

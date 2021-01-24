@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiProvinciasService } from '../../services/api-provincias.service';
 import { Provincia } from '../../models/provincia.model';
 import { Localidad } from '../../models/localidad.model';
+import { Persona } from '../../models/persona.model';
+import { PersonaService } from 'src/app/services/persona.service';
 
 
 @Component({
@@ -13,6 +15,7 @@ export class CompletarDatosComponent implements OnInit {
 
   provinces: any[] = [];
   localities: any[] = [];
+  persona: any;
 
   
   public provincias: Provincia[];
@@ -20,12 +23,16 @@ export class CompletarDatosComponent implements OnInit {
   public localidades: Localidad[];
   selectedLocalidades: Localidad = new Localidad();
 
-  constructor(private completarDatos: ApiProvinciasService) { }
+  constructor(private completarDatos: ApiProvinciasService, private personas: PersonaService ) { }
 
   ngOnInit(): void {
 
-    this.completarDatos.getProvincias()
-    .subscribe( provincias => {
+    this.personas.getPersonas().subscribe(resp => {
+      this.persona = JSON.stringify(resp) ;
+      console.log(this.persona);      
+    });
+
+    this.completarDatos.getProvincias().subscribe( provincias => {
       this.selectedProvincia = provincias;
       this.provinces = provincias.provincias.map(t => t.nombre);
       console.log(this.provinces);
@@ -40,8 +47,6 @@ export class CompletarDatosComponent implements OnInit {
       console.log(this.localities);
     } );
   }
-
-
 
   public onSelect(item: Provincia) {
     this.selectedProvincia = item;

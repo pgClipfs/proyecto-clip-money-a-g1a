@@ -19,14 +19,12 @@ export class ApiProvinciasService {
     // tslint:disable-next-line: prefer-const
     let header = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<Provincia>(this.provincias);
-
   }
 
   getLocalidades(nombreProvincia: any): Observable<Localidad> {
     // tslint:disable-next-line: prefer-const
     let header = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get<Localidad>(this.localidades + '?provincia=' + nombreProvincia + '&campos=nombre&max=250' );
-
   }
 
 }

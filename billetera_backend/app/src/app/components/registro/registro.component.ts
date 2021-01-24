@@ -23,7 +23,6 @@ export class RegistroComponent implements OnInit {
     });
   }
 
-
   public onDelete(id: number) {
     this.personaService.onDeletePersona(id).subscribe(resp => {
       this.personas = this.personas.filter(t => t.Id !== id);
@@ -35,29 +34,23 @@ export class RegistroComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-
-
   }
 
   public onSubmit(form: NgForm, persona: Persona) {
-
     if (form.invalid) {
       return;
     }
 
     if (persona.Id == 0) {
       this.personaService.onCreatePersona(persona).subscribe(resp => {
-
       });
       alert('Registro exitoso')
       this.router.navigateByUrl('user/login');
     }
     else {
       this.personaService.onUpdatePersona(persona).subscribe(resp => {
-
       });
     }
-
     this.selectedPersona = new Persona();
   }
 

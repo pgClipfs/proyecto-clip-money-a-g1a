@@ -31,6 +31,7 @@ namespace billetera_backend.Models
             }
             return id;
         }
+
         public List<Persona> ObtenerPersonas()
         {
             List<Persona> lista = new List<Persona>();
@@ -141,6 +142,34 @@ namespace billetera_backend.Models
 
 
             }
+        }
+
+
+        public int AgregarPersonaCompleta(Persona nueva)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+            int id = 0;
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "insertar_persona";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nombre", nueva.Nombre));
+                comm.Parameters.Add(new SqlParameter("@apellido", nueva.Apellido));
+                comm.Parameters.Add(new SqlParameter("@email", nueva.Email));
+                comm.Parameters.Add(new SqlParameter("@pass", nueva.Pass));
+                comm.Parameters.Add(new SqlParameter("@pass", nueva.Pass));
+                comm.Parameters.Add(new SqlParameter("@pass", nueva.Pass));
+                comm.Parameters.Add(new SqlParameter("@pass", nueva.Pass));
+                comm.Parameters.Add(new SqlParameter("@pass", nueva.Pass));
+
+
+                id = Convert.ToInt32(comm.ExecuteScalar());
+            }
+            return id;
         }
     }
 }

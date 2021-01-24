@@ -11,6 +11,8 @@ export class PersonaService {
 
   url = 'https://localhost:44374/api/persona';
 
+  personas:any;
+
   constructor(private http: HttpClient) {
     console.log('Persona service is running');
   }
@@ -18,8 +20,7 @@ export class PersonaService {
   getPersonas(): Observable<Persona[]> {
     // tslint:disable-next-line: prefer-const
     let header = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get<Persona[]>(this.url);
-
+    return this.http.get<Persona[]>(this.url);  
   }
 
   onDeletePersona(id: number): Observable<number> {
