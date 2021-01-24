@@ -16,6 +16,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CvuComponent } from './components/cvu/cvu.component';
 import { TranferenciaComponent } from './components/tranferencia/tranferencia.component';
 import { AgregarcbuComponent } from './components/agregarcbu/agregarcbu.component';
+import { RecuperarcontrComponent } from './components/recuperarcontr/recuperarcontr.component';
+import { MailcontrComponent } from './components/mailcontr/mailcontr.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AgregarcbuComponent } from './components/agregarcbu/agregarcbu.componen
     NavbarComponent,
     CvuComponent,
     TranferenciaComponent,
-    AgregarcbuComponent
+    AgregarcbuComponent,
+    RecuperarcontrComponent,
+    MailcontrComponent
 
   ],
   imports: [

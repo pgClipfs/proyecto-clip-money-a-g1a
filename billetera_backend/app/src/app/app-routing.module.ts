@@ -9,6 +9,10 @@ import { PersonaComponent } from './components/persona/persona.component';
 import { RegistroComponent } from './components/registro/registro.component'
 import { TranferenciaComponent } from './components/tranferencia/tranferencia.component';
 import { AgregarcbuComponent } from './components/agregarcbu/agregarcbu.component';
+import { RecuperarcontrComponent } from './components/recuperarcontr/recuperarcontr.component';
+import { MailcontrComponent } from './components/mailcontr/mailcontr.component';
+
+
 
 
 
@@ -23,6 +27,8 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'agregarcbu', component: AgregarcbuComponent },
   { path: 'transferencia', component: TranferenciaComponent },
+  { path: 'recuperarcontr', component: RecuperarcontrComponent },
+  { path: 'mailcontr', component: MailcontrComponent },
   { path: '**', redirectTo: '' }
 ];
 
