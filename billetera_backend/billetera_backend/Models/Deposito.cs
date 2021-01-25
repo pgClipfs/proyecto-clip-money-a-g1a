@@ -7,7 +7,7 @@ namespace billetera_backend.Models
 {
     public class Deposito : Operacion
     {
-        public Deposito(decimal monto, DateTime fecha, int codigo) : base(monto, fecha, codigo)
+        public Deposito(decimal monto, DateTime fecha, string codigo) : base(monto, fecha, codigo)
         {
 
         }

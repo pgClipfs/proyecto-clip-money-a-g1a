@@ -87,9 +87,6 @@ namespace billetera_backend.Models
 
         public int HacerTransferencia(Transferencia transferencia)
         {
-
-           
-
             string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
             int id = 0;
 
@@ -98,11 +95,11 @@ namespace billetera_backend.Models
                 conn.Open();
 
                 SqlCommand comm = conn.CreateCommand();
+
                 comm.CommandText = "transferencia";
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@monto", transferencia.Monto));
                 comm.Parameters.Add(new SqlParameter("@id_cuenta", transferencia.Id_Cuenta_Origen));
-
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
             }
@@ -112,17 +109,38 @@ namespace billetera_backend.Models
                 conn.Open();
 
                 SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "deposito";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@monto", transferencia.Monto));
+                comm.CommandText = "UPDATE cuenta SET saldo = saldo + @montoDestino WHERE id_persona = @id_cuenta";
+                comm.Parameters.Add(new SqlParameter("@montoDestino", transferencia.Monto));
                 comm.Parameters.Add(new SqlParameter("@id_cuenta", transferencia.Id_Cuenta_Destino));
+                id = Convert.ToInt32(comm.ExecuteScalar());
+            }
 
+            return id;
+        }
+
+        public int HacerGiro(Giro giro)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+            int id = 0;
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+
+                comm.CommandText = "giro";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@monto", giro.Monto));
+                comm.Parameters.Add(new SqlParameter("@id_cuenta", giro.Id_Cuenta));
+                comm.Parameters.Add(new SqlParameter("@monto_maximo", giro.MontoMax));
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
             }
 
             return id;
         }
+
 
     }
 }

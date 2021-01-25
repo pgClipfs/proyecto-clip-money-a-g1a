@@ -66,7 +66,7 @@ export class TransferenciasComponent implements OnInit {
 
   enviarTransferencia(monto: number){
 
-    if(monto > this.personaLogeadaCuenta["Saldo"]){
+    if(monto > this.personaLogeadaCuenta["Saldo"] || monto == 0){
       alert("No tienes suficiente saldo para hacer la operacion.")
     }else{
     this.transferencia.monto = monto;

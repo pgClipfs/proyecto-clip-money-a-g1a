@@ -17,6 +17,7 @@ import { CompletarDatosComponent } from './components/completar-datos/completar-
 import { CvuComponent } from './components/cvu/cvu.component';
 import { TransferenciasComponent } from './components/transferencias/transferencias.component';
 import { BuscadorCuentaComponent } from './components/buscador-cuenta/buscador-cuenta.component';
+import { GiroComponent } from './components/giro/giro.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BuscadorCuentaComponent } from './components/buscador-cuenta/buscador-c
     CvuComponent,
     TransferenciasComponent,
     BuscadorCuentaComponent,
+    GiroComponent,
 
   ],
   imports: [

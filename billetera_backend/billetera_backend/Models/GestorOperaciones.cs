@@ -19,7 +19,7 @@ namespace billetera_backend.Models
             {
                 conn.Open();
 
-                SqlCommand comm = new SqlCommand("select id, monto, fecha, id_tipo_operacion from operacion", conn);
+                SqlCommand comm = new SqlCommand("select id, monto, fecha, tipo_operacion from operacion", conn);
                 comm.Parameters.Add(new SqlParameter("@id", id));
 
                 SqlDataReader dr = comm.ExecuteReader();
@@ -32,7 +32,7 @@ namespace billetera_backend.Models
                         decimal monto = dr.GetDecimal(1);
                         DateTime fecha = dr.GetDateTime(2);
                  
-                        int codigo = dr.GetInt16(3);
+                        string codigo = dr.GetString(3);
 
                     
                    

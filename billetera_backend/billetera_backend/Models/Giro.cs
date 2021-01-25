@@ -6,11 +6,11 @@ using System.Web;
 
 namespace billetera_project.Models
 {
-    public class Giro: Operacion
+    public class Giro
     {
-        public Giro(decimal monto, DateTime fecha, int codigo) : base(monto, fecha, codigo)
-        {
-
-        }
+        public int Id { get; set; }
+        public int Id_Cuenta { get; set; }
+        public decimal Monto { get; set; }
+        public decimal MontoMax { get; set; }
     }
 }

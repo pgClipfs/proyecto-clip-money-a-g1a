@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   public cuentas: DatosCuenta[];
   public personas : Persona[];
-  movim : any;
+  movim : UltimosMov[];
 
   idposta: any;
   plata: any;
@@ -52,9 +52,10 @@ export class HomeComponent implements OnInit {
         console.log(this.plata);
       })
 
+      console.log(this.idposta);
+
       this.home1.getUltimosMov(this.idposta).subscribe(resp => {
-        this.movim = resp.map(t=> t.monto);
-        console.log("Por aca!!!!!!!" + this.movim);
+        this.movim = resp;
       })
 
     })
