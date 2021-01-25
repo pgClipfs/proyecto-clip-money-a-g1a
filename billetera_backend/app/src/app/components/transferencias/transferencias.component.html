@@ -35,11 +35,9 @@
 
 
                     <div class="mt-3">
-                        <p class="lead">Nombre Ficticio</p>
-                        <p class="lead">CUIT/CUIL: 20-00000000-1</p>
+                        <p class="lead">{{ persona.Nombre}} {{ persona.Apellido }}</p>
+                        <p class="lead">CUIT/CUIL: {{persona.Cuit}}</p>
                         <p class="lead">Banco Ficticio</p>
-                        <p class="lead">Nombre Destinatario: {{nombreDestinatario}} </p>
-                        <p class="lead">Caja de ahorros</p>
                     </div>
                     <div class="container-login100-form-btn1 m-t-17">
                         <button class="btn btn-outline-info" type="submit">
@@ -56,11 +54,11 @@
                     </div>
 
                     <div class="wrap-input200 mb-3">
-                        <input class="input100 border rounded border-info text-center" type="text" placeholder="$0">
+                        <input class="input100 border rounded border-info text-center" type="text" placeholder="$0" [(ngModel)]="transferencia.monto">
                     </div>
-                    <p class="input100">$100.00 Disponibles</p>
+                    <p class="input100">Saldo disponible: {{personaLogeadaCuenta["Saldo"]}}</p>
                     <div class="">
-                        <button class="btn btn-outline-info" type="submit">
+                        <button class="btn btn-outline-info" type="submit" (click)="enviarTransferencia(transferencia.monto)">
                         Confirmar
                     </button>
                     </div>

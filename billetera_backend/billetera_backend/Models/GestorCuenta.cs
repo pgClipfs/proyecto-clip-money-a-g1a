@@ -1,4 +1,5 @@
-﻿using System;
+﻿using billetera_project.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -82,5 +83,46 @@ namespace billetera_backend.Models
 
             return cuenta;
         }
+
+
+        public int HacerTransferencia(Transferencia transferencia)
+        {
+
+           
+
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+            int id = 0;
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "transferencia";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@monto", transferencia.Monto));
+                comm.Parameters.Add(new SqlParameter("@id_cuenta", transferencia.Id_Cuenta_Origen));
+
+
+                id = Convert.ToInt32(comm.ExecuteScalar());
+            }
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "deposito";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@monto", transferencia.Monto));
+                comm.Parameters.Add(new SqlParameter("@id_cuenta", transferencia.Id_Cuenta_Destino));
+
+
+                id = Convert.ToInt32(comm.ExecuteScalar());
+            }
+
+            return id;
+        }
+
     }
 }
