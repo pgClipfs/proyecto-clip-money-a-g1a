@@ -6,7 +6,7 @@ import { PersonaService } from '../../services/persona.service';
 import { LoginService } from '../../services/login.service';
 import { Persona } from 'src/app/models/persona.model';
 import { Foto } from '../../models/foto';
-import { CargaFotoService } from '../../services/carga-foto.service';
+import { FotoService } from '../../services/foto.service';
 
 
 @Component({
@@ -31,7 +31,8 @@ export class CompletarDatosComponent implements OnInit {
   constructor(private completarDatos: ApiProvinciasService,
               private personasService: PersonaService,
               private login: LoginService,
-              private upload: CargaFotoService) { }
+              private fotoService: FotoService
+              ) { }
 
   ngOnInit(): void {
 
@@ -73,13 +74,12 @@ export class CompletarDatosComponent implements OnInit {
     });
   }
 
-  public cargarFoto(foto: Foto){
-    this.upload.onSubirFoto(foto).subscribe(resp =>{
+  // public cargaFoto(foto: Foto){
+  //   console.log(foto);
+  //   this.fotoService.enviarFoto(foto).subscribe(resp =>{
+  //     this.fotohtml = resp;
+  //   })
+  // }
 
-      this.fotohtml = resp
-      console.log(this.fotohtml);
-
-    })
-  }
 
 }

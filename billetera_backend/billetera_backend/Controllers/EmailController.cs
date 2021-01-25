@@ -32,7 +32,7 @@ namespace billetera_backend.Controllers
         {
             string subject = "Correo de verificación";
             string to = email.Mail;
-            string body = "Test si funciona, abram es un genio";
+            string body = "ESTE ES UN CORREO DE PRUEBA, AQUI ENVIARIAMOS EL LINK PARA EL RECUPERO DE CONTRASEÑA";
 
             MailMessage mm = new MailMessage()
             {

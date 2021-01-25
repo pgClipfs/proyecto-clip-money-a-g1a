@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit {
 
   }
 
-
+  public logout(){
+    localStorage.removeItem('token');
+  }
 
 }

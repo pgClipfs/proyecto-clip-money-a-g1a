@@ -1,6 +1,6 @@
 export class Foto {
 
-    Foto_Frente: File;
-    Foto_Dorse: File;
+    Foto_Frente: string;
+    Foto_Dorse: string;
 
 }
