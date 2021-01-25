@@ -18,6 +18,7 @@ namespace billetera_backend
                 url: "{*.}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }
