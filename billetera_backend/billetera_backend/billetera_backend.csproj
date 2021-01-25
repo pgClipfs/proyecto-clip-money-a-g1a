@@ -158,6 +158,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MostrarSaldosController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
+    <Compile Include="Controllers\RecuperarController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Controllers\UltimosMovController.cs" />
