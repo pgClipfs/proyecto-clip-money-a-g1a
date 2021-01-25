@@ -11,45 +11,42 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 //using System.Web.Mvc;
 
 namespace billetera_backend.Controllers
 {
     [RoutePrefix("api/email")]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class EmailController : ApiController
     {
-        public void Get()
+        [HttpGet]
+        public IHttpActionResult Sendmail()
         {
-
+             return Ok("Funciona");
         }
 
-        public void Post()
+
+        [HttpPost]
+        public Email Sendmail(Email email)
         {
-            GestorEmail gestor = new GestorEmail();
-            gestor.Mail();
+            string subject = "Correo de verificación";
+            string to = email.Mail;
+            string body = "Test si funciona, abram es un genio";
+
+            MailMessage mm = new MailMessage()
+            {
+                From = new MailAddress("soporte.m.clip@gmail.com"),
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = false
+            };
+            mm.To.Add(to);
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Send(mm);
+
+            return email;
         }
-
- 
-
-        //[HttpPost]
-        //private void SendEmail()
-        //{
-        //    string subject = "Email Subject";
-        //    string body = "Hola soy un texto de prueba";
-        //    string FromMail = "aletorancio35@gmail.com";
-        //    string emailTo = "aletorancio35@gmail.com";
-        //    MailMessage mail = new MailMessage();
-        //    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-        //    mail.From = new MailAddress(FromMail);
-        //    mail.To.Add(emailTo);
-        //    mail.Subject = subject;
-        //    mail.Body = body;
-        //    SmtpServer.Port = 587;
-        //    SmtpServer.Credentials = new NetworkCredential("aletorancio35@gmail.com", "nadiemepara");
-        //    SmtpServer.EnableSsl = true;
-        //    SmtpServer.Send(mail);
-        //}
-
-
     }
 }

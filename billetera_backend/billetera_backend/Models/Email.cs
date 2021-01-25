@@ -9,10 +9,8 @@ namespace billetera_backend.Models
     {
 
              
-        public string toname { get; set; }
-        public string toemail { get; set; }
-        public string subject { get; set; }
-        public string message { get; set; }
+        public string Mail { get; set; }
+     
 
     }
 

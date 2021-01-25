@@ -19,7 +19,7 @@ namespace billetera_backend.Models
             {
                 conn.Open();
 
-                SqlCommand comm = new SqlCommand("select id, monto, fecha, tipo_operacion from operacion", conn);
+                SqlCommand comm = new SqlCommand("select id, monto, fecha, tipo_operacion from operacion where id_cuenta = @id", conn);
                 comm.Parameters.Add(new SqlParameter("@id", id));
 
                 SqlDataReader dr = comm.ExecuteReader();

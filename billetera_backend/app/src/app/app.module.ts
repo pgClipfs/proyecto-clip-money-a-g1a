@@ -18,6 +18,7 @@ import { CvuComponent } from './components/cvu/cvu.component';
 import { TransferenciasComponent } from './components/transferencias/transferencias.component';
 import { BuscadorCuentaComponent } from './components/buscador-cuenta/buscador-cuenta.component';
 import { GiroComponent } from './components/giro/giro.component';
+import { RecuperarContraseniaComponent } from './components/recuperar-contrasenia/recuperar-contrasenia.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { GiroComponent } from './components/giro/giro.component';
     TransferenciasComponent,
     BuscadorCuentaComponent,
     GiroComponent,
+    RecuperarContraseniaComponent,
 
   ],
   imports: [

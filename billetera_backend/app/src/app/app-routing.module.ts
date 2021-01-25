@@ -9,6 +9,7 @@ import { CvuComponent } from './components/cvu/cvu.component';
 import { TransferenciasComponent } from './components/transferencias/transferencias.component';
 import { BuscadorCuentaComponent } from './components/buscador-cuenta/buscador-cuenta.component';
 import { GiroComponent } from './components/giro/giro.component';
+import { RecuperarContraseniaComponent } from './components/recuperar-contrasenia/recuperar-contrasenia.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'transferencias', component: TransferenciasComponent },
   { path: 'buscador-cuenta', component: BuscadorCuentaComponent },
   { path: 'giro', component: GiroComponent },
+  { path: 'recuperar-contrasenia', component: RecuperarContraseniaComponent },
   { path: '', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];

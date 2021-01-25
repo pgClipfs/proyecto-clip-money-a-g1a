@@ -1,0 +1,28 @@
+<div class="limiter animated fadeInLeft">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form #formulario="ngForm" class="login100-form validate-form flex-sb flex-w">
+                <div class="text-center logoAncho">
+                    <img class="logo" src="assets/images/RecursosMoneyClip_Logo.png" alt="">
+                </div>
+
+
+                <span *ngIf="formulario.submitted && formulario.controls['Username'].errors" class="text-white animated fadeIn">El usuario es obligatorio</span>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="Username" placeholder="Escribe tu correo" [(ngModel)]="mailnew.Mail" required>
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit" (click)="onSubmit(mailnew.Mail)">
+                        Ingresar
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>

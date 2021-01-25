@@ -133,7 +133,7 @@ namespace billetera_backend.Models
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@monto", giro.Monto));
                 comm.Parameters.Add(new SqlParameter("@id_cuenta", giro.Id_Cuenta));
-                comm.Parameters.Add(new SqlParameter("@monto_maximo", giro.MontoMax));
+                comm.Parameters.Add(new SqlParameter("@monto_max", giro.MontoMax));
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
             }
