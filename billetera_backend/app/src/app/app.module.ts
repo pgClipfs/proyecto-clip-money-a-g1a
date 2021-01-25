@@ -14,7 +14,9 @@ import { InterceptorService } from './services/interceptor.service';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CompletarDatosComponent } from './components/completar-datos/completar-datos.component';
-import { PepeComponent } from './components/equis/pepe/pepe.component';
+import { CvuComponent } from './components/cvu/cvu.component';
+import { TransferenciasComponent } from './components/transferencias/transferencias.component';
+import { BuscadorCuentaComponent } from './components/buscador-cuenta/buscador-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PepeComponent } from './components/equis/pepe/pepe.component';
     RegistroComponent,
     NavbarComponent,
     CompletarDatosComponent,
-    PepeComponent
+    CvuComponent,
+    TransferenciasComponent,
+    BuscadorCuentaComponent,
 
   ],
   imports: [

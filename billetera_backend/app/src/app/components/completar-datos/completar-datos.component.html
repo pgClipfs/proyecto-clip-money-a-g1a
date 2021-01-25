@@ -13,7 +13,7 @@
                 <div class="form-group row">
                     <label class="col-2 col-form-label">Nombre</label>
                     <div class="col-8">
-                        <input class="form-control" type="text" placeholder="Nombre">
+                        <input class="form-control" type="text" name="Nombre" [(ngModel)]="persona.Nombre" placeholder="Nombre" value="{{ persona.Nombre }}">
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@
                     <label class="col-2 col-form-label">Apellido</label>
                     <div class="col-8">
 
-                        <input class="form-control" type="text" placeholder="Apellido">
+                        <input class="form-control" type="text" name="Apellido" placeholder="Apellido" value="{{ persona.Apellido }}">
                     </div>
                 </div>
 
@@ -32,9 +32,8 @@
                 <label class="col-2 col-form-label">Provincia</label>
                 <div class="col-4">
 
-                    <select class="form-control" name="provincia" ngModel required #nombre>
+                    <select class="form-control" name="Provincia" [(ngModel)]="persona.Provincia" required #nombre value="{{ persona.Provincia }}">
                 <option *ngFor="let provincia of provinces"   [value]="provincia" >
-                    
                     {{provincia}}
                 </option >
             </select>
@@ -47,7 +46,7 @@
                 <label class="col-2 col-form-label">Localidad</label>
                 <div class="col-8">
 
-                    <select class="form-control" name="localidad" ngModel required (click)="getLocalidades(nombre.value)"> 
+                    <select class="form-control" name="Localidad" [(ngModel)]="persona.Localidad" required (click)="getLocalidades(nombre.value)" value="{{ persona.Localidad }}"> 
                 <option *ngFor="let localidad of localities" [value]="localidad" >
                     {{localidad}}
                 </option>
@@ -60,15 +59,22 @@
                 <label class="col-2 col-form-label">Direccion</label>
                 <div class="col-8">
 
-                    <input class="form-control" type="text" placeholder="Direccion">
+                    <input class="form-control" type="text" [(ngModel)]="persona.Direccion" name="Direccion" placeholder="Direccion" value="{{ persona.Direccion }}">
                 </div>
             </div>
 
             <div class="form-group row">
+                <label class="col-2 col-form-label">Cuit</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" [(ngModel)]="persona.Cuit" name="Cuit" placeholder="Cuit" value="{{ persona.Cuit }}">
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-2 col-form-label">Telefono</label>
                 <div class="col-8">
 
-                    <input class="form-control" type="number" placeholder="Telefono">
+                    <input class="form-control" type="number" [(ngModel)]="persona.Celular" name="Celular" placeholder="Celular" value="{{ persona.Celular }}">
                 </div>
             </div>
 
@@ -76,7 +82,7 @@
                 <label class="col-2 col-form-label">Correo</label>
                 <div class="col-8">
 
-                    <input class="form-control" type="email" placeholder="Correo electrónico">
+                    <input class="form-control" type="email" [(ngModel)]="persona.Email" name="Email" placeholder="Correo electrónico" value="{{ persona.Email }}">
                 </div>
             </div>
 
@@ -84,19 +90,29 @@
                 <label class="col-2 col-form-label">Password</label>
                 <div class="col-8">
 
-                    <input class="form-control" type="password" placeholder="Contraseña">
+                    <input class="form-control" type="password" [(ngModel)]="persona.Pass" name="Pass" placeholder="Contraseña" value="{{ persona.Pass }} ">
                 </div>
             </div>
 
+            <div class="mt-5 mb-5 row">
 
-            <div class="form-group row">
-                <label class="col-2 col-form-label">&nbsp;</label>
-                <div class="input-group col-md-8">
-                    <button type="submit" class="login100-form-btn">
-        Guardar
-      </button>
+
+                <div class="col">
+
+                    <input class="form_control" type="file" value="{{ fotohtml.Foto_Dorse }}" />
                 </div>
+                <div class="col">
+                    <input class="form_control" type="file" value="{{ fotohtml.Foto_Dorse }}" />
+
+                </div>
+                <button class="btn btn-success " (click)="cargarFoto(fotohtml)">Subir Fotos</button>
+
             </div>
+
+            <div class="input-group col-md-3">
+                <button type="submit" class="login100-form-btn" (click)="updatePersona(persona)">Guardar</button>
+            </div>
+
 
         </form>
 

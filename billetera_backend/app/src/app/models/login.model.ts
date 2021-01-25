@@ -1,7 +1,8 @@
 export class Login {
 
-    Id: number = 0;
+    Id: number;
     Username: string;
     Password: string;
-    Id_persona: number = 0;
+    Id_persona: number;
+
 }

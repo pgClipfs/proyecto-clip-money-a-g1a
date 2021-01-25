@@ -9,20 +9,16 @@
                             Login
                         </span> -->
 
-                <span *ngIf="formulario.submitted && formulario.controls['Username'].errors"
-                    class="text-white animated fadeIn">El usuario es obligatorio</span>
+                <span *ngIf="formulario.submitted && formulario.controls['Username'].errors" class="text-white animated fadeIn">El usuario es obligatorio</span>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="Username" placeholder="Usuario"
-                        [(ngModel)]="selectedLogin.Username" required>
+                    <input class="input100" type="text" name="Username" placeholder="Usuario" [(ngModel)]="selectedLogin.Username" required>
 
                     <span class="focus-input100"></span>
                 </div>
 
-                <span *ngIf="formulario.submitted && formulario.controls['Password'].errors"
-                    class="text-white animated fadeIn">La contraseña es incorrecta</span>
+                <span *ngIf="formulario.submitted && formulario.controls['Password'].errors" class="text-white animated fadeIn">La contraseña es incorrecta</span>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="password" name="Password" placeholder="Contraseña"
-                        [(ngModel)]="selectedLogin.Password" required>
+                    <input class="input100" type="password" name="Password" placeholder="Contraseña" [(ngModel)]="selectedLogin.Password" required>
                     <span class="focus-input100"></span>
                 </div>
 
@@ -42,7 +38,7 @@
                 </div>
 
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn" type="submit" (click)="onSubmit(formulario, selectedLogin)">
+                    <button class="login100-form-btn" type="submit" (click)="onSubmit(formulario,selectedLogin)">
                         Ingresar
                     </button>
                 </div>

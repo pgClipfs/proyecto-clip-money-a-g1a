@@ -7,7 +7,7 @@ namespace billetera_backend.Models
 {
     public class Cuenta
     {
-        
+        private int id;   
         private string estado;
         private decimal saldo;
         private int nroCuenta;
@@ -15,9 +15,9 @@ namespace billetera_backend.Models
         private long cbu;
         private string moneda;
 
-        public Cuenta( string estado, decimal saldo, int nroCuenta, string alias, long cbu, string moneda)
+        public Cuenta( int id, string estado, decimal saldo, int nroCuenta, string alias, long cbu, string moneda)
         {
-            
+            this.id = id;
             this.estado = estado;
             this.saldo = saldo;
             this.nroCuenta = nroCuenta;
@@ -26,8 +26,13 @@ namespace billetera_backend.Models
             this.moneda = moneda;
 
         }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
-     
+
         public string Estado
         {
             get { return estado; }

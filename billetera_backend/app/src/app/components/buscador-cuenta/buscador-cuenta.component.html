@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <table class="table  mt-3">
+        <thead class="table-info">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Nro Cuenta</th>
+                <th scope="col">Alias</th>
+                <th scope="col">Cvu</th>
+                <th scope="col">Moneda</th>
+
+                <th>Gestión</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cuenta of datosCuenta;" class="text-white">
+
+                <td>{{ cuenta["Id"] }}</td>
+                <td>{{ cuenta["Estado"] }}</td>
+                <td>{{cuenta["NroCuenta"]}}</td>
+                <td>{{cuenta["Alias"]}}</td>
+                <td>{{cuenta["Cbu"]}}</td>
+                <td>{{cuenta["Moneda"]}}</td>
+
+                <td><button (click)="onSeleccion( 1 )" class="btn btn-danger" routerLink="/transferencias">Seleccionar</button>
+            </tr>
+        </tbody>
+    </table>
+</div>

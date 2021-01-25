@@ -1,9 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { MostrarSaldosService } from '../../services/mostrar-saldos.service';
-import { MostarSaldos } from '../../models/mostar-saldos.model';
+import {DatosCuentaService } from '../../services/DatosCuenta.service';
+import { DatosCuenta } from '../../models/DatosCuenta.model';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { UltimosMovService } from '../../services/ultimos-mov.service';
+import { PersonaService } from '../../services/persona.service';
+import { Persona } from 'src/app/models/persona.model';
+import { Login } from '../../models/login.model';
+import { LoginService } from '../../services/login.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { UltimosMov } from '../../models/ultimos-mov.model';
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,51 +20,46 @@ import { UltimosMovService } from '../../services/ultimos-mov.service';
 })
 export class HomeComponent implements OnInit {
 
+  public cuentas: DatosCuenta[];
+  public personas : Persona[];
+  movim : any;
+
+  idposta: any;
   plata: any;
-  movimientos:any;
-
   
-
-  ultmomovimiento1: any;
-  ultmomovimiento2: any;
-  ultmomovimiento3: any;
-  ultmomovimiento4: any;
-  ultmomovimiento5: any;
-  ultmomovimiento6: any;
-  ultmomovimiento7: any;
-  ultmomovimiento8: any;
-  ultmomovimiento9: any;
-  ultmomovimiento10: any;
-
-  constructor(private home: MostrarSaldosService, private home1: UltimosMovService) { }
+  constructor( private home: DatosCuentaService, 
+              private home1: UltimosMovService, 
+              private persona: PersonaService,
+              private login: LoginService) { }
 
   ngOnInit(): void {
-    
-      this.home.getSaldos()
-      .subscribe(saldo =>{
-       
-           saldo = Object.values(saldo);
-           this.plata = saldo[1];
-           
+
+    this.persona.getPersonas().subscribe(resp =>{
+      this.personas = Object.values(resp);
+      console.log(this.personas);
+      for(let i = 0; i < this.personas.length; i++)
+      {
+        if(this.login.user == this.personas[i]['Email'])
+        {
+          this.idposta = i + 1;
+        }
+      }
+      console.log("Entro: " + this.idposta);
+      this.home.getSaldos(this.idposta).subscribe(resp =>{
+        console.log(resp);
+        this.plata = resp;
+        this.plata = this.plata['Saldo'];
+        console.log(this.plata);
       })
-      this.home1.getUltimosMov()
-      .subscribe(movi =>{
-       this.movimientos = Object.values(movi);
-         this.ultmomovimiento1 = this.movimientos.pop();
-         this.ultmomovimiento2 = this.movimientos.pop();
-         this.ultmomovimiento3 = this.movimientos.pop();
-         this.ultmomovimiento4 = this.movimientos.pop();
-         this.ultmomovimiento5 = this.movimientos.pop();
-         this.ultmomovimiento6 = this.movimientos.pop();
-         this.ultmomovimiento7 = this.movimientos.pop();
-         this.ultmomovimiento8 = this.movimientos.pop();
-         this.ultmomovimiento9 = this.movimientos.pop();
-         this.ultmomovimiento10 = this.movimientos.pop();  
+
+      this.home1.getUltimosMov(this.idposta).subscribe(resp => {
+        this.movim = resp.map(t=> t.monto);
+        console.log("Por aca!!!!!!!" + this.movim);
       })
+
+    })
+
 
   }
-
- 
-
 
 }

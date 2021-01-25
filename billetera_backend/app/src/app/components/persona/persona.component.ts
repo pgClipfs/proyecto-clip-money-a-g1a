@@ -17,6 +17,7 @@ export class PersonaComponent implements OnInit {
 
   ngOnInit(): void {
     this.personaService.getPersonas().subscribe(resp => {
+      console.log("Esta es la respuesta:");
       console.log(resp);
       this.personas = resp;
     });
@@ -31,19 +32,8 @@ export class PersonaComponent implements OnInit {
 
 
   public onSubmit(persona: Persona) {
-
-    /*if (persona.Id == 0) {
-      this.personaService.onCreatePersona(persona).subscribe(resp => {
-        this.personas.push(resp);
-      });
-    }
-    else {
-      this.personaService.onUpdatePersona(persona).subscribe(resp => {
-
-      });
-    }*/
-
     this.selectedPersona = new Persona();
+    console.log(this.selectedPersona);
   }
 
 

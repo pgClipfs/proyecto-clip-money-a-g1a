@@ -25,8 +25,10 @@
                 <h6>COMPRAS</h6>
             </div>
             <div class="col-4">
-                <a class="" href=" "><img class="" src="../assets/images/home-icons/MoneyClip Interfaz-51.png "></a>
+                <a class="" href=" " routerLink="/transferencias"><img class="" src="../assets/images/home-icons/MoneyClip Interfaz-51.png "></a>
                 <h6>TRANSFERENCIAS</h6>
+
+
             </div>
         </div>
 
@@ -46,9 +48,13 @@
             </div>
         </div>
 
+        <div class="container">
+            <div *ngFor="let item of movim">
+                {{item}}
+            </div>
+        </div>
 
-
-        <div class="container row">
+        <!-- <div class="container row">
             <div class="mov-col-una col-lg-6  flex-column justify-content-around align-items-center mb-1   mr-5 ml-5">
                 <div class="mb-1 d-flex justify-content-between align-items-center mr-5 ml-5 ">
                     <img height="40px" width="40px" src="../assets/images/home-icons/MoneyClip Interfaz-52.png ">
@@ -104,7 +110,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 </div>

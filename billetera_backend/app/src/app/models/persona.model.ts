@@ -1,11 +1,13 @@
 export class Persona {
 
-    Id: number = 0;
+    Id: number;
     Nombre: string;
     Apellido: string;
     Cuit: string;
     Direccion: string;
-    IdLocalidad: number;
+    Localidad: string;
+    Provincia: string;
     Email: string;
     Pass: string;
+    Celular: string;
 }

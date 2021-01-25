@@ -5,6 +5,9 @@ import { LoginComponent } from './components/login/login.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { RegistroComponent } from './components/registro/registro.component'
 import { CompletarDatosComponent } from './components/completar-datos/completar-datos.component';
+import { CvuComponent } from './components/cvu/cvu.component';
+import { TransferenciasComponent } from './components/transferencias/transferencias.component';
+import { BuscadorCuentaComponent } from './components/buscador-cuenta/buscador-cuenta.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +15,9 @@ const routes: Routes = [
   { path: 'user/login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'completar-datos', component: CompletarDatosComponent },
+  { path: 'cvu', component: CvuComponent },
+  { path: 'transferencias', component: TransferenciasComponent },
+  { path: 'buscador-cuenta', component: BuscadorCuentaComponent },
   { path: '', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];

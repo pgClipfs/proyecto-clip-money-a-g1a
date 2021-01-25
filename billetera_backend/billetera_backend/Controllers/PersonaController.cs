@@ -12,12 +12,13 @@ namespace billetera_backend.Controllers
 {
     
     [RoutePrefix("api/persona")]
+        [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class PersonaController : ApiController
     {
         
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
 
         // POST: api/Persona
+        [Authorize]
         public Persona Post(Persona persona)
         {
             int id;
@@ -42,7 +43,7 @@ namespace billetera_backend.Controllers
         }*/
 
         // GET: api/Persona
-        //[Authorize]
+        
         public IEnumerable<Persona> Get()
         {
             GestorPersona gPersona = new GestorPersona();

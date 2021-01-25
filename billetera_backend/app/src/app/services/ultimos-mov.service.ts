@@ -8,13 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class UltimosMovService {
 
-  url = 'https://localhost:44374/api/ultimosmov/9'
+  url = 'https://localhost:44374/api/ultimosmov'
 
   constructor(private http: HttpClient) { }
 
 
-  getUltimosMov(): Observable<UltimosMov>{
-    let header = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get<UltimosMov>(this.url);
+  
 
-}}
+
+  getUltimosMov(id:any): Observable<UltimosMov[]>{
+    let header = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get<UltimosMov[]>(this.url + '/' + id);
+
+}
+}

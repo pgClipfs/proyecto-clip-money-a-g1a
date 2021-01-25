@@ -11,6 +11,8 @@ export class PersonaService {
 
   url = 'https://localhost:44374/api/persona';
 
+  id: any;
+
   constructor(private http: HttpClient) {
     console.log('Persona service is running');
   }
@@ -31,10 +33,12 @@ export class PersonaService {
   onCreatePersona(persona: Persona): Observable<Persona> {
     // tslint:disable-next-line: prefer-const
     let header = new HttpHeaders().set('Content-Type', 'application/json');
+    console.log(persona);
     return this.http.post<Persona>(this.url, persona);
   }
   onUpdatePersona(persona: Persona): Observable<Persona> {
     // tslint:disable-next-line: prefer-const
+    console.log(persona);
     let header = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put<Persona>(this.url, persona);
   }

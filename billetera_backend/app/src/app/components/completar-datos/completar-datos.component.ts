@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiProvinciasService } from '../../services/api-provincias.service';
 import { Provincia } from '../../models/provincia.model';
 import { Localidad } from '../../models/localidad.model';
+import { PersonaService } from '../../services/persona.service';
+import { LoginService } from '../../services/login.service';
+import { Persona } from 'src/app/models/persona.model';
+import { Foto } from '../../models/foto';
+import { CargaFotoService } from '../../services/carga-foto.service';
 
 
 @Component({
@@ -20,15 +25,32 @@ export class CompletarDatosComponent implements OnInit {
   public localidades: Localidad[];
   selectedLocalidades: Localidad = new Localidad();
 
-  constructor(private completarDatos: ApiProvinciasService) { }
+  public persona: Persona = new Persona();
+  public fotohtml: Foto = new Foto();
+
+  constructor(private completarDatos: ApiProvinciasService,
+              private personasService: PersonaService,
+              private login: LoginService,
+              private upload: CargaFotoService) { }
 
   ngOnInit(): void {
+
+    this.personasService.getPersonas()
+    .subscribe(resp =>{
+      for(let i = 0; i < resp.length;i++ ){
+        if(resp[i]["Email"] == this.login.user){
+          this.persona = resp[i];
+        }
+      }
+      console.log("!!!!!!!!!!!!!!!");
+      console.log(this.persona);
+      
+    })
 
     this.completarDatos.getProvincias()
     .subscribe( provincias => {
       this.selectedProvincia = provincias;
       this.provinces = provincias.provincias.map(t => t.nombre);
-      console.log(this.provinces);
     } );
   }
 
@@ -37,13 +59,27 @@ export class CompletarDatosComponent implements OnInit {
     .subscribe( localidades => {
       this.selectedLocalidades = localidades;
       this.localities = localidades.localidades.map(t => t.nombre);
-      console.log(this.localities);
     } );
   }
-
-
 
   public onSelect(item: Provincia) {
     this.selectedProvincia = item;
   }
+
+  public updatePersona(person: Persona){
+    this.personasService.onUpdatePersona(person).subscribe(resp =>{
+      this.persona = resp;
+      console.log(this.persona);
+    });
+  }
+
+  public cargarFoto(foto: Foto){
+    this.upload.onSubirFoto(foto).subscribe(resp =>{
+
+      this.fotohtml = resp
+      console.log(this.fotohtml);
+
+    })
+  }
+
 }

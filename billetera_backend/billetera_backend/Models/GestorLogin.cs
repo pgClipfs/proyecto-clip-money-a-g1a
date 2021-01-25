@@ -36,6 +36,41 @@ namespace billetera_backend.Models
 
         }
 
-       
+        public List<User> ObtenerUsuario()
+        {
+            List<User> lista = new List<User>();
+
+            string StrConn = ConfigurationManager.ConnectionStrings["BDLocal"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "SELECT *FROM USUARIO";
+                //comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlDataReader dr = comm.ExecuteReader();
+                while (dr.Read())
+                {
+                    User user = new User
+                    {
+                        Id = int.Parse(dr["id"].ToString()),
+                        Usuario = dr["usuario"].ToString(),
+                        Pass = dr["pass"].ToString()
+                    };
+
+
+                    lista.Add(user);
+                }
+
+                dr.Close();
+
+
+                return lista;
+
+            }
+        }
+
     }
 }
