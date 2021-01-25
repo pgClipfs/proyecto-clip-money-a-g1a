@@ -32,17 +32,7 @@ namespace billetera_backend.Controllers
 
             SmtpClient smtp = new SmtpClient();
             smtp.Send(mm);
-            /*string v = "";
-            try
-            {
-                smtp.Send(mm);
-            }
-            catch (Exception ex)
-            {
-                v = "Exception caught in CreateTestMessage2(): {0}" + ex.ToString();
-            }
-            //string v = smtp.EnableSsl.ToString();
-            return v;*/
+           
         }
     }
 }
