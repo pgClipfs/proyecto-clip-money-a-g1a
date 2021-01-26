@@ -7,7 +7,7 @@
     <p class="input100 mt-5">Saldo Actual:{{personaLogeadaCuenta["Saldo"]}}</p>
     <p class="input100 ">Disponible para girar:</p>
     <p class="input100  text-info">
-        $ {{personaLogeadaCuenta["Saldo"]*.10}}
+        $ {{personaLogeadaCuenta["Saldo"]*1.10}}
     </p>
     <button class="btn btn-outline-info" type="submit" (click)="enviarGiro(giro.Monto)">Enviar</button>
 

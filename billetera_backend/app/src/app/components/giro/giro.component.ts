@@ -55,7 +55,7 @@ export class GiroComponent implements OnInit {
 
   enviarGiro(monto: number){
     this.giro.Id_Cuenta = this.personaLogeada["Id"];
-    this.giro.MontoMax = this.personaLogeadaCuenta["Saldo"] * .10;
+    this.giro.MontoMax = this.personaLogeadaCuenta["Saldo"] * 1.10;
     this.giro.Monto = monto;
     if(this.giro.Monto <= this.giro.MontoMax){
       this.giroService.enviarGiro(this.giro).subscribe(resp =>{
